@@ -24,7 +24,18 @@ public class Main {
             for (Player player : Player.players) {
                 System.out.println("Player " + player.getNumber() + ": " + player.getPoints() + " Points | "
                     + player.getTokens() + " Tokens");
-                System.out.println("What would you like to do? (bet <number>, hit, stand)");
+                System.out.println("How many tokens would you like to bet? ");
+                player.bet(S)
+                System.out.println("What would you like to do? (hit, stand)");
+                String response = scan.nextLine().toLowerCase().split(" ");
+                switch (response[0]) {
+                    case "hit":
+                        break;
+                    case "stand":
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
