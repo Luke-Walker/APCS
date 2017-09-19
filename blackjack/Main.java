@@ -20,6 +20,18 @@ public class Main {
             player.setTokens(startingTokens);
         }
 
+        while (true) {
+            for (Player player : Player.players) {
+                System.out.println("Player " + player.getNumber() + ": " + player.getPoints() + " Points | "
+                    + player.getTokens() + " Tokens");
+                System.out.println("What would you like to do? (bet <number>, hit, stand)");
+            }
+        }
+    }
 
+    private static newRound() {
+        for (Player player : Player.players) {
+            player.resetPoints();
+        }
     }
 }
