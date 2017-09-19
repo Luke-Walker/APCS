@@ -1,3 +1,5 @@
+package blackjack;
+
 import java.lang.*;
 
 public class Player {
@@ -10,6 +12,7 @@ public class Player {
     public Player(String name) {
         this.name = name;
         this.number = players.size() + 1;
+        this.tokens = 0;
 
         players.add(this);
     }
@@ -24,6 +27,10 @@ public class Player {
 
     public int getTokens() {
         return tokens;
+    }
+
+    public void setTokens(int tokens) {
+        this.tokens = tokens;
     }
 
     public void addTokens(int tokens) {
