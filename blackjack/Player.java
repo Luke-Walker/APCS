@@ -8,15 +8,17 @@ public class Player {
 
     private String name;
     private int number, points, tokens, bet;
-    private boolean stand;
+    private boolean dealer, standing, busted;
 
-    public Player(String name) {
+    public Player(String name, boolean dealer) {
         this.name = name;
         this.number = players.size() + 1;
         this.points = 0;
         this.tokens = 0;
         this.bet = 0;
-        this.stand = false;
+        this.dealer = dealer;
+        this.standing = false;
+        this.busted = false;
 
         players.add(this);
     }
@@ -77,11 +79,23 @@ public class Player {
         this.tokens -= tokens;
     }
 
-    public boolean isStanding() {
-        return stand;
+    public boolean isDealer() {
+        return dealer;
     }
 
-    public void setStanding(boolean stand) {
-        this.stand = stand;
+    public boolean isStanding() {
+        return standing;
+    }
+
+    public void setStanding(boolean standing) {
+        this.standing = standing;
+    }
+
+    public boolean isBusted() {
+        return busted;
+    }
+
+    public void setBusted(boolean busted) {
+        this.busted = busted;
     }
 }

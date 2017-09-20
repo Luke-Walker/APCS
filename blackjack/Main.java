@@ -5,6 +5,8 @@ import java.util.*;
 
 public class Main {
 
+    public static final Player dealer = new Player("Dealer", true);
+
     public static void main(String[] args) {
         if (args.length == 0) return;
 
@@ -15,7 +17,7 @@ public class Main {
 
         for (int i = 0; i < args.length; i++) {
             System.out.println("Player " + i + "'s name: ");
-            new Player(scan.nextLine());
+            new Player(scan.nextLine(), false);
         }
 
         System.out.println("How many tokens should each person start with? ");
@@ -26,6 +28,8 @@ public class Main {
 
         while (true) {
             for (Player player : Player.players) {
+                if (player.isBusted() || player.isStanding()) continue;
+
                 System.out.println("Player " + player.getNumber() + ": " + player.getPoints() + " Points | "
                     + player.getTokens() + " Tokens");
                 System.out.println("How many tokens would you like to bet? ");
@@ -41,6 +45,12 @@ public class Main {
                         break;
                     default:
                         break;
+                }
+
+                if (!player.isStanding()) {
+                    if (player.getPoints() > 21) {
+                        player.setBusted(true);
+                    }
                 }
             }
         }
