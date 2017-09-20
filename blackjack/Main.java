@@ -1,5 +1,6 @@
 package blackjack;
 
+import java.lang.*;
 import java.util.*;
 
 public class Main {
@@ -7,7 +8,10 @@ public class Main {
     public static void main(String[] args) {
         if (args.length == 0) return;
 
+        Card.initCards();
+
         Scanner scan = new Scanner(System.in);
+        Random rand = new Random();
 
         for (int i = 0; i < args.length; i++) {
             System.out.println("Player " + i + "'s name: ");
@@ -25,13 +29,15 @@ public class Main {
                 System.out.println("Player " + player.getNumber() + ": " + player.getPoints() + " Points | "
                     + player.getTokens() + " Tokens");
                 System.out.println("How many tokens would you like to bet? ");
-                player.bet(S)
+                player.bet(Integer.parseInt(scan.nextLine()));
                 System.out.println("What would you like to do? (hit, stand)");
                 String response = scan.nextLine().toLowerCase().split(" ");
                 switch (response[0]) {
                     case "hit":
+                        Card.playCard(player);
                         break;
                     case "stand":
+                        player.setStanding(true);
                         break;
                     default:
                         break;
@@ -43,6 +49,11 @@ public class Main {
     private static newRound() {
         for (Player player : Player.players) {
             player.resetPoints();
+            player.setStanding(false);
+        }
+        for (Card card : Card.usedCards) {
+            Card.usedCards.remove(card);
+            Card.cards.add(card);
         }
     }
 }

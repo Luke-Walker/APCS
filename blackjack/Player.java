@@ -8,6 +8,7 @@ public class Player {
 
     private String name;
     private int number, points, tokens, bet;
+    private boolean stand;
 
     public Player(String name) {
         this.name = name;
@@ -15,20 +16,29 @@ public class Player {
         this.points = 0;
         this.tokens = 0;
         this.bet = 0;
+        this.stand = false;
 
         players.add(this);
     }
 
-    public void bet() {
+    public int getBet() {
+        return bet;
+    }
 
+    public void bet(int bet) {
+        this.bet = bet;
+    }
+
+    public void resetBet() {
+        this.bet = 0;
     }
 
     public void win() {
-
+        addTokens(bet);
     }
 
     public void lose() {
-
+        removeTokens(bet);
     }
 
     public String getName() {
@@ -65,5 +75,13 @@ public class Player {
 
     public void removeTokens(int tokens) {
         this.tokens -= tokens;
+    }
+
+    public boolean isStanding() {
+        return stand;
+    }
+
+    public void setStanding(boolean stand) {
+        this.stand = stand;
     }
 }
