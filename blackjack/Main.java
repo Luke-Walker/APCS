@@ -13,7 +13,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         Random rand = new Random();
 
-        for (int i = 1; i <= args[0]; i++) {
+        for (int i = 1; i <= Integer.parseInt(args[0]); i++) {
             System.out.println("Player " + i + "'s name: ");
             new Player(scan.nextLine(), false);
         }
@@ -26,12 +26,15 @@ public class Main {
 
         while (true) {
             for (Player player : Player.players) {
+                if (player.getBet() == 0) {
+                    System.out.print("How many tokens would you like to bet? ");
+                    player.bet(Integer.parseInt(scan.nextLine()));
+                }
+
                 if (player.isBusted() || player.isStanding()) continue;
 
                 System.out.println("Player " + player.getNumber() + ": " + player.getPoints() + " Points | "
                     + player.getTokens() + " Tokens");
-                System.out.println("How many tokens would you like to bet? ");
-                player.bet(Integer.parseInt(scan.nextLine()));
                 System.out.println("What would you like to do? (hit, stand)");
                 String[] response = scan.nextLine().toLowerCase().split(" ");
                 switch (response[0]) {

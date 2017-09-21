@@ -38,10 +38,12 @@ public class Player {
 
     public void win() {
         addTokens(bet);
+        resetBet();
     }
 
     public void lose() {
         removeTokens(bet);
+        resetBet();
     }
 
     public String getName() {
