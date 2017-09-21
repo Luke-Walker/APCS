@@ -1,6 +1,7 @@
 package blackjack;
 
 import java.lang.*;
+import java.util.*;
 
 public class Player {
 
@@ -20,7 +21,7 @@ public class Player {
         this.standing = false;
         this.busted = false;
 
-        players.add(this);
+        if (!dealer) players.add(this);
     }
 
     public int getBet() {

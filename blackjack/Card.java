@@ -1,6 +1,7 @@
 package blackjack;
 
 import java.lang.*;
+import java.util.*;
 
 public class Card {
 
@@ -18,7 +19,7 @@ public class Card {
     }
 
     public static void initCards() {
-        for (int i = 0; i < 13; i++) {
+        for (int i = 1; i <= 13; i++) {
             new Card("hearts", i);
             new Card("diamonds", i);
             new Card("clubs", i);
@@ -26,7 +27,7 @@ public class Card {
         }
     }
 
-    public void playCard(Player player) {
+    public static void playCard(Player player) {
         Random rand = new Random();
         Card card = cards.get(rand.nextInt(cards.size()));
 
@@ -34,6 +35,10 @@ public class Card {
         usedCards.add(card);
 
         player.addPoints(card.getValue());
+    }
+
+    public String getSuit() {
+        return suit;
     }
 
     public int getValue() {

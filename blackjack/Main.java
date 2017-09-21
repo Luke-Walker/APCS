@@ -5,8 +5,6 @@ import java.util.*;
 
 public class Main {
 
-    public static final Player dealer = new Player("Dealer", true);
-
     public static void main(String[] args) {
         if (args.length == 0) return;
 
@@ -15,7 +13,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         Random rand = new Random();
 
-        for (int i = 0; i < args.length; i++) {
+        for (int i = 1; i <= args[0]; i++) {
             System.out.println("Player " + i + "'s name: ");
             new Player(scan.nextLine(), false);
         }
@@ -35,7 +33,7 @@ public class Main {
                 System.out.println("How many tokens would you like to bet? ");
                 player.bet(Integer.parseInt(scan.nextLine()));
                 System.out.println("What would you like to do? (hit, stand)");
-                String response = scan.nextLine().toLowerCase().split(" ");
+                String[] response = scan.nextLine().toLowerCase().split(" ");
                 switch (response[0]) {
                     case "hit":
                         Card.playCard(player);
@@ -56,7 +54,7 @@ public class Main {
         }
     }
 
-    private static newRound() {
+    private static void newRound() {
         for (Player player : Player.players) {
             player.resetPoints();
             player.setStanding(false);
