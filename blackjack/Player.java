@@ -5,23 +5,26 @@ import java.util.*;
 
 public class Player {
 
+    public static Player dealer = new Player("Dealer", true);
+
     public static ArrayList<Player> players = new ArrayList<Player>();
+    public static ArrayList<Player> remainingPlayers = new ArrayList<Player>();
 
     private String name;
     private int number, points, tokens, bet;
-    private boolean dealer, standing, busted;
+    private boolean isDealer, standing, busted;
 
-    public Player(String name, boolean dealer) {
+    public Player(String name, boolean isDealer) {
         this.name = name;
         this.number = players.size() + 1;
         this.points = 0;
         this.tokens = 0;
         this.bet = 0;
-        this.dealer = dealer;
+        this.isDealer = isDealer;
         this.standing = false;
         this.busted = false;
 
-        if (!dealer) players.add(this);
+        if (!isDealer) players.add(this);
     }
 
     public int getBet() {
@@ -80,10 +83,6 @@ public class Player {
 
     public void removeTokens(int tokens) {
         this.tokens -= tokens;
-    }
-
-    public boolean isDealer() {
-        return dealer;
     }
 
     public boolean isStanding() {

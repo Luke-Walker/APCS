@@ -14,30 +14,29 @@ public class Main {
         Random rand = new Random();
 
         for (int i = 1; i <= Integer.parseInt(args[0]); i++) {
-            System.out.println("Player " + i + "'s name: ");
+            System.out.print("Player " + i + "'s name: ");
             new Player(scan.nextLine(), false);
         }
 
-        System.out.println("How many tokens should each person start with? ");
+        System.out.print("How many tokens should each person start with? ");
         int startingTokens = Integer.parseInt(scan.nextLine());
         for (Player player : Player.players) {
             player.setTokens(startingTokens);
         }
-
+        System.out.print("\n");
         while (true) {
             for (Player player : Player.players) {
-                if (player.getBet() == 0) {
-                    System.out.print("How many tokens would you like to bet? ");
-                    player.bet(Integer.parseInt(scan.nextLine()));
-                }
-
                 if (player.isBusted() || player.isStanding()) continue;
 
                 System.out.println("Player " + player.getNumber() + ": " + player.getPoints() + " Points | "
                     + player.getTokens() + " Tokens");
-                System.out.println("What would you like to do? (hit, stand)");
-                String[] response = scan.nextLine().toLowerCase().split(" ");
-                switch (response[0]) {
+                if (player.getBet() == 0) {
+                    System.out.print("How many tokens would you like to bet? ");
+                    player.bet(Integer.parseInt(scan.nextLine()));
+                }
+                System.out.print("What would you like to do? (hit, stand): ");
+                String response = scan.nextLine().toLowerCase();
+                switch (response) {
                     case "hit":
                         Card.playCard(player);
                         break;
@@ -48,10 +47,24 @@ public class Main {
                         break;
                 }
 
-                if (!player.isStanding()) {
-                    if (player.getPoints() > 21) {
-                        player.setBusted(true);
+                System.out.print("\n");
+            }
+            for (Player player : Player.players) {
+                if (!player.isStanding() && !player.isBusted()) Player.remainingPlayers.add(player);
+            }
+
+            if (Player.remainingPlayers.size() == 0) {
+                ArrayList<Player> standing = new ArrayList<Player>();
+                for (Player player : Player.players) {
+                    if (player.isStanding()) {
+                        if ((player.getPoints() > Player.dealer.getPoints()) || player.getPoints() == 21) {
+                            System.out.println("Player " + player.getNumber() + " won " + player.getBet()*2 + " tokens!");
+                            player.win();
+                        }
                     }
+                }
+                for (Player player : standing) {
+
                 }
             }
         }
