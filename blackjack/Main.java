@@ -5,6 +5,8 @@ import java.util.*;
 
 public class Main {
 
+    private static boolean round = true;
+
     public static void main(String[] args) {
         if (args.length == 0) return;
 
@@ -24,12 +26,13 @@ public class Main {
             player.setTokens(startingTokens);
         }
         System.out.print("\n");
+        round = true;
         while (true) {
             for (Player player : Player.players) {
                 if (player.isBusted() || player.isStanding()) continue;
 
-                System.out.println("Player " + player.getNumber() + ": " + player.getPoints() + " Points | "
-                    + player.getTokens() + " Tokens");
+                System.out.println(player.getName() + ": "  + player.getPoints() + " Points | "
+                    + player.getTokens() + " Tokens | " + player.getBet() + " Bet");
                 if (player.getBet() == 0) {
                     System.out.print("How many tokens would you like to bet? ");
                     player.bet(Integer.parseInt(scan.nextLine()));
@@ -50,23 +53,40 @@ public class Main {
                 System.out.print("\n");
             }
             for (Player player : Player.players) {
-                if (!player.isStanding() && !player.isBusted()) Player.remainingPlayers.add(player);
+                if (!player.isStanding() && !player.isBusted()) {
+                    Player.remainingPlayers.add(player);
+                } else {
+                    Player.remainingPlayers.remove(player);
+                }
             }
 
             if (Player.remainingPlayers.size() == 0) {
                 ArrayList<Player> standing = new ArrayList<Player>();
+                ArrayList<Player> winners = new ArrayList<Player>();
                 for (Player player : Player.players) {
                     if (player.isStanding()) {
-                        if ((player.getPoints() > Player.dealer.getPoints()) || player.getPoints() == 21) {
-                            System.out.println("Player " + player.getNumber() + " won " + player.getBet()*2 + " tokens!");
-                            player.win();
+                        if (winners.size() == 0) {
+                            winners.add(player);
+                            continue;
+                        }
+                        if (player.getPoints() > winners.get(0).getPoints()) {
+                            winners.clear();
+                            winners.add(player);
+                        } else if (player.getPoints() == 21) {
+                            if (winners.get(0).getPoints() != 21) {
+                                winners.clear();
+                            }
+                            winners.add(player);
                         }
                     }
                 }
-                for (Player player : standing) {
-
+                for (Player player : winners) {
+                    System.out.println(player.getName() + " won " + player.getBet()*2 + " tokens!");
+                    player.win();
+                    round = false;
                 }
             }
+            if (!round) newRound();
         }
     }
 
@@ -75,9 +95,11 @@ public class Main {
             player.resetPoints();
             player.setStanding(false);
         }
-        for (Card card : Card.usedCards) {
+        ArrayList<Card> used = Card.usedCards;
+        for (Card card : used) {
             Card.usedCards.remove(card);
             Card.cards.add(card);
         }
+        round = true;
     }
 }

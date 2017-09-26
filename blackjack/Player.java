@@ -5,14 +5,12 @@ import java.util.*;
 
 public class Player {
 
-    public static Player dealer = new Player("Dealer", true);
-
     public static ArrayList<Player> players = new ArrayList<Player>();
     public static ArrayList<Player> remainingPlayers = new ArrayList<Player>();
 
     private String name;
     private int number, points, tokens, bet;
-    private boolean isDealer, standing, busted;
+    private boolean standing, busted;
 
     public Player(String name, boolean isDealer) {
         this.name = name;
@@ -20,7 +18,6 @@ public class Player {
         this.points = 0;
         this.tokens = 0;
         this.bet = 0;
-        this.isDealer = isDealer;
         this.standing = false;
         this.busted = false;
 
@@ -33,6 +30,7 @@ public class Player {
 
     public void bet(int bet) {
         this.bet = bet;
+        removeTokens(bet);
     }
 
     public void resetBet() {
