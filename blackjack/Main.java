@@ -93,6 +93,7 @@ public class Main {
     private static void newRound() {
         for (Player player : Player.players) {
             player.resetPoints();
+            player.resetBet();
             player.setStanding(false);
             player.setBusted(false);
         }
