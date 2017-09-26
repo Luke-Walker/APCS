@@ -38,7 +38,7 @@ public class Player {
     }
 
     public void win() {
-        addTokens(bet);
+        addTokens(bet*2);
         resetBet();
     }
 

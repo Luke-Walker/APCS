@@ -95,7 +95,8 @@ public class Main {
             player.resetPoints();
             player.setStanding(false);
         }
-        ArrayList<Card> used = Card.usedCards;
+        ArrayList<Card> used = new ArrayList<Card>();
+        for (Card card : Card.usedCards) used.add(card);
         for (Card card : used) {
             Card.usedCards.remove(card);
             Card.cards.add(card);
