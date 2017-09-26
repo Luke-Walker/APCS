@@ -81,7 +81,7 @@ public class Main {
                     }
                 }
                 for (Player player : winners) {
-                    System.out.println(player.getName() + " won " + player.getBet()*2 + " tokens!");
+                    System.out.println(player.getName() + " won " + player.getBet()*2 + " tokens!\n\n");
                     player.win();
                     round = false;
                 }
@@ -94,6 +94,7 @@ public class Main {
         for (Player player : Player.players) {
             player.resetPoints();
             player.setStanding(false);
+            player.setBusted(false);
         }
         ArrayList<Card> used = new ArrayList<Card>();
         for (Card card : Card.usedCards) used.add(card);
