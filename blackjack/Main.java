@@ -9,6 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
         if (args.length == 0) return;
+		if (Integer.parseInt(args[0]) <= 0) return;
 
         Card.initCards();
 
