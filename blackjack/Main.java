@@ -26,6 +26,7 @@ public class Main {
         int startingTokens = Integer.parseInt(scan.nextLine());
         for (Player player : Player.players) {
             player.setTokens(startingTokens);
+            Player.remainingPlayers.add(player);
         }
         System.out.print("\n");
         round = true;
@@ -53,13 +54,10 @@ public class Main {
                 }
 
                 System.out.print("\n");
-            }
-            for (Player player : Player.players) {
-                if (!player.isStanding() && !player.isBusted()) {
-                    Player.remainingPlayers.add(player);
-                } else {
-                    Player.remainingPlayers.remove(player);
-                }
+
+                if (player.isStanding() || player.isBusted()) Player.remainingPlayers.remove(player);
+
+                if (Player.remainingPlayers.size() <= 1) break;
             }
 
             if (Player.remainingPlayers.size() <= 1) {
@@ -68,6 +66,7 @@ public class Main {
                     if (player.isStanding() || Player.remainingPlayers.size() == 1) {
                         if (winners.size() == 0) {
                             winners.add(player);
+                            System.out.println(player.getName()+ "ASD");
                             continue;
                         }
                         if (player.getPoints() > winners.get(0).getPoints()) {
@@ -92,21 +91,25 @@ public class Main {
     }
 
     private static void newRound() {
+        Player.remainingPlayers.clear();
         ArrayList<Player> out = new ArrayList<Player>();
         for (Player player : Player.players) {
             if (player.getTokens() <= 0) {
                 System.out.println(player.getName() + " is out of tokens!");
                 out.add(player);
+                continue;
             }
 
             player.resetPoints();
             player.resetBet();
             player.setStanding(false);
             player.setBusted(false);
+
+            Player.remainingPlayers.add(player);
         }
         for (Player player : out) Player.players.remove(player);
 
-        Player.remainingPlayers.clear();
+        if (Player.players.size() == 1) System.exit(0);
 
         ArrayList<Card> used = new ArrayList<Card>();
         for (Card card : Card.usedCards) used.add(card);

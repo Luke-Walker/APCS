@@ -35,7 +35,7 @@ public class Card {
         usedCards.add(card);
 
         player.addPoints(card.getValue());
-        System.out.println("Player " + player.getNumber() + " hit a "
+        System.out.println(player.getName() + " hit a "
             + card.getValue() + " of " + card.getSuit());
         if (player.getPoints() > 21) {
             System.out.println("They busted with a score of " + player.getPoints() + ".");
@@ -44,7 +44,7 @@ public class Card {
             System.out.println("Blackjack!");
             player.setStanding(true);
         } else {
-            System.out.println("Player " + player.getNumber() + "'s value is now " + player.getPoints() + ".");
+            System.out.println(player.getName() + "'s value is now " + player.getPoints() + ".");
         }
     }
 
