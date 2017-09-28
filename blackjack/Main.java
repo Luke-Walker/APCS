@@ -16,7 +16,7 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
         Random rand = new Random();
-
+        
         for (int i = 1; i <= Integer.parseInt(args[0]); i++) {
             System.out.print("Player " + i + "'s name: ");
             new Player(scan.nextLine());
