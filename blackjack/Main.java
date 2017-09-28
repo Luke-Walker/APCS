@@ -10,11 +10,7 @@ public class Main {
     public static void main(String[] args) {
         if (args.length == 0) return;
 		if (Integer.parseInt(args[0]) <= 0) return;
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> e645429bd79951bfa080de7b642800d90167f710
         Card.initCards();
 
         Scanner scan = new Scanner(System.in);
