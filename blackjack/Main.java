@@ -1,5 +1,6 @@
 package blackjack;
 
+import java.io.*;
 import java.lang.*;
 import java.util.*;
 
@@ -18,7 +19,7 @@ public class Main {
 
         for (int i = 1; i <= Integer.parseInt(args[0]); i++) {
             System.out.print("Player " + i + "'s name: ");
-            new Player(scan.nextLine(), false);
+            new Player(scan.nextLine());
         }
 
         System.out.print("How many tokens should each person start with? ");

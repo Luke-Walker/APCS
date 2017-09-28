@@ -12,7 +12,7 @@ public class Player {
     private int number, points, tokens, bet;
     private boolean standing, busted;
 
-    public Player(String name, boolean isDealer) {
+    public Player(String name) {
         this.name = name;
         this.number = players.size() + 1;
         this.points = 0;
@@ -21,7 +21,7 @@ public class Player {
         this.standing = false;
         this.busted = false;
 
-        if (!isDealer) players.add(this);
+        players.add(this);
     }
 
     public int getBet() {
