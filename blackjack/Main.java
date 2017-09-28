@@ -10,13 +10,13 @@ public class Main {
 
     public static void main(String[] args) {
         if (args.length == 0) return;
-		if (Integer.parseInt(args[0]) <= 0) return;
+		if (Integer.parseInt(args[0]) < 2) return;
 
         Card.initCards();
 
         Scanner scan = new Scanner(System.in);
         Random rand = new Random();
-        
+
         for (int i = 1; i <= Integer.parseInt(args[0]); i++) {
             System.out.print("Player " + i + "'s name: ");
             new Player(scan.nextLine());
@@ -62,11 +62,10 @@ public class Main {
                 }
             }
 
-            if (Player.remainingPlayers.size() == 0) {
-                ArrayList<Player> standing = new ArrayList<Player>();
+            if (Player.remainingPlayers.size() <= 1) {
                 ArrayList<Player> winners = new ArrayList<Player>();
-                for (Player player : Player.players) {
-                    if (player.isStanding()) {
+                for (Player player : Player.remainingPlayers) {
+                    if (player.isStanding() || Player.remainingPlayers.size() == 1) {
                         if (winners.size() == 0) {
                             winners.add(player);
                             continue;
@@ -93,12 +92,22 @@ public class Main {
     }
 
     private static void newRound() {
+        ArrayList<Player> out = new ArrayList<Player>();
         for (Player player : Player.players) {
+            if (player.getTokens() <= 0) {
+                System.out.println(player.getName() + " is out of tokens!");
+                out.add(player);
+            }
+
             player.resetPoints();
             player.resetBet();
             player.setStanding(false);
             player.setBusted(false);
         }
+        for (Player player : out) Player.players.remove(player);
+
+        Player.remainingPlayers.clear();
+
         ArrayList<Card> used = new ArrayList<Card>();
         for (Card card : Card.usedCards) used.add(card);
         for (Card card : used) {
