@@ -30,7 +30,6 @@ public class Main {
         }
 
         int startingTokens = 100;
-
         do {
             System.out.print("How many tokens should each person start with? ");
             try {
