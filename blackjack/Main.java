@@ -8,6 +8,11 @@ public class Main {
 
     private static boolean round = true;
 
+    /*
+        1: hit/stand choice
+    */
+    private static boolean[] loops = {false};
+
     public static void main(String[] args) {
         if (args.length == 0) return;
 		if (Integer.parseInt(args[0]) < 2) return;
@@ -40,18 +45,22 @@ public class Main {
                     System.out.print("How many tokens would you like to bet? ");
                     player.bet(Integer.parseInt(scan.nextLine()));
                 }
-                System.out.print("What would you like to do? (hit, stand): ");
-                String response = scan.nextLine().toLowerCase();
-                switch (response) {
-                    case "hit":
-                        Card.playCard(player);
-                        break;
-                    case "stand":
-                        player.setStanding(true);
-                        break;
-                    default:
-                        break;
-                }
+                do {
+                    System.out.print("What would you like to do? (hit, stand): ");
+                    String response = scan.nextLine().toLowerCase();
+                    switch (response) {
+                        case "hit":
+                            Card.playCard(player);
+                            loops[0] = true;
+                            break;
+                        case "stand":
+                            player.setStanding(true);
+                            loops[0] = true;
+                            break;
+                        default:
+                            break;
+                    }
+                } while (!loops[0]);
 
                 System.out.print("\n");
 
