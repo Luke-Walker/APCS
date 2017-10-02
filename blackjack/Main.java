@@ -53,15 +53,18 @@ public class Main {
                 System.out.println(player.getName() + ": "  + player.getPoints() + " Points | "
                     + player.getTokens() + " Tokens | " + player.getBet() + " Bet");
                 if (player.getBet() == 0) {
+                    int bet = 0;
                     do {
                         System.out.print("How many tokens would you like to bet? ");
                         try {
-                            player.bet(Integer.parseInt(scan.nextLine()));
+                            bet = Integer.parseInt(scan.nextLine());
                         } catch (NumberFormatException ex) {
                             continue;
                         }
+                        if (bet > player.getTokens()) continue;
                         loops[1] = true;
                     } while (!loops[1]);
+                    player.bet(bet);
                 }
                 do {
                     System.out.print("What would you like to do? (hit, stand): ");
