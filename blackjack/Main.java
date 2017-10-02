@@ -9,9 +9,11 @@ public class Main {
     private static boolean round = true;
 
     /*
-        1: hit/stand choice
+        0: hit/stand choice
+        1: placing bets
+        2: starting tokens
     */
-    private static boolean[] loops = {false};
+    private static boolean[] loops = {false, false, false};
 
     public static void main(String[] args) {
         if (args.length == 0) return;
@@ -27,8 +29,18 @@ public class Main {
             new Player(scan.nextLine());
         }
 
-        System.out.print("How many tokens should each person start with? ");
-        int startingTokens = Integer.parseInt(scan.nextLine());
+        int startingTokens = 100;
+
+        do {
+            System.out.print("How many tokens should each person start with? ");
+            try {
+                startingTokens = Integer.parseInt(scan.nextLine());
+            } catch (NumberFormatException ex) {
+                continue;
+            }
+            loops[2] = true;
+        } while (!loops[2]);
+
         for (Player player : Player.players) {
             player.setTokens(startingTokens);
             Player.remainingPlayers.add(player);
@@ -42,8 +54,15 @@ public class Main {
                 System.out.println(player.getName() + ": "  + player.getPoints() + " Points | "
                     + player.getTokens() + " Tokens | " + player.getBet() + " Bet");
                 if (player.getBet() == 0) {
-                    System.out.print("How many tokens would you like to bet? ");
-                    player.bet(Integer.parseInt(scan.nextLine()));
+                    do {
+                        System.out.print("How many tokens would you like to bet? ");
+                        try {
+                            player.bet(Integer.parseInt(scan.nextLine()));
+                        } catch (NumberFormatException ex) {
+                            continue;
+                        }
+                        loops[1] = true;
+                    } while (!loops[1]);
                 }
                 do {
                     System.out.print("What would you like to do? (hit, stand): ");
