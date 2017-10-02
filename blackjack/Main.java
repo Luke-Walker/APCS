@@ -62,11 +62,10 @@ public class Main {
 
             if (Player.remainingPlayers.size() <= 1) {
                 ArrayList<Player> winners = new ArrayList<Player>();
-                for (Player player : Player.remainingPlayers) {
-                    if (player.isStanding() || Player.remainingPlayers.size() == 1) {
+                for (Player player : Player.players) {
+                    if ((player.isStanding() || Player.remainingPlayers.size() == 1) && !player.isBusted()) {
                         if (winners.size() == 0) {
                             winners.add(player);
-                            System.out.println(player.getName()+ "ASD");
                             continue;
                         }
                         if (player.getPoints() > winners.get(0).getPoints()) {
@@ -109,7 +108,10 @@ public class Main {
         }
         for (Player player : out) Player.players.remove(player);
 
-        if (Player.players.size() == 1) System.exit(0);
+        if (Player.players.size() == 1) {
+            System.out.println(Player.players.get(0).getName() + " won the game!");
+            System.exit(0);
+        }
 
         ArrayList<Card> used = new ArrayList<Card>();
         for (Card card : Card.usedCards) used.add(card);
