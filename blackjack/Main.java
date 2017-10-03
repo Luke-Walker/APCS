@@ -141,7 +141,7 @@ public class Main {
         for (Player player : out) Player.players.remove(player);
 
         if (Player.players.size() == 1) {
-            System.out.println(Player.players.get(0).getName() + " won the game!");
+            System.out.println(Player.players.get(0).getName() + " is the last player. Game is now ending.");
             System.exit(0);
         }
 
