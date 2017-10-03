@@ -88,6 +88,8 @@ public class Main {
                 if (player.isStanding() || player.isBusted()) Player.remainingPlayers.remove(player);
 
                 if (Player.remainingPlayers.size() <= 1) break;
+
+                resetLoops();
             }
 
             if (Player.remainingPlayers.size() <= 1) {
@@ -150,5 +152,11 @@ public class Main {
             Card.cards.add(card);
         }
         round = true;
+    }
+
+    private static void resetLoops() {
+        for (int i = 0; i < loops.length; i++) {
+            loops[i] = false;
+        }
     }
 }
