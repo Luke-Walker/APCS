@@ -87,7 +87,8 @@ public class Main {
 
                 if (player.isStanding() || player.isBusted()) Player.remainingPlayers.remove(player);
 
-                if (Player.remainingPlayers.size() <= 1) break;
+                if ((Player.remainingPlayers.size() <= 1 && Player.players.size() == 2) ||
+                    (Player.players.size() >= 3 && Player.remainingPlayers.size() == 0)) break;
 
                 resetLoops();
             }
