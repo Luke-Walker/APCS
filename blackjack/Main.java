@@ -93,7 +93,7 @@ public class Main {
                 resetLoops();
             }
 
-            if (Player.remainingPlayers.size() <= 1) {
+            if (Player.remainingPlayers.size() == 0) {
                 ArrayList<Player> winners = new ArrayList<Player>();
                 for (Player player : Player.players) {
                     if ((player.isStanding() || Player.remainingPlayers.size() == 1) && !player.isBusted()) {
