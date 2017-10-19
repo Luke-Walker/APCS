@@ -3,35 +3,31 @@ import java.net.*;
 
 public class Client {
 
-    private Socket clientSocket;
+    private Socket socket;
     private PrintWriter out;
-    private BufferedReader in;
+    private BufferedReader in, stdIn;
 
-    public void startConnection(String ip, int port) throws IOException {
-        clientSocket = new Socket(ip, port);
-        out = new PrintWriter(clientSocket.getOutputStream(), true);
-        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-    }
+    public void connect(String ip, int port) {
+        try {
+            socket = new Socket(ip, port);
+            out = new PrintWriter(socket.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            stdIn = new BufferedReader(new InputStreamReader(System.in));
 
-    public String sendMessage(String msg) throws IOException {
-        out.println(msg);
-        String resp = in.readLine();
-        return resp;
-    }
-
-    public void stopConnection() throws IOException {
-        in.close();
-        out.close();
-        clientSocket.close();
-    }
-
-    public static void main(String[] args) throws IOException {
-        if (args.length < 2) {
-            return;
+            String input;
+            while ((input = stdIn.readLine()) != null) {
+                out.println(input);
+                System.out.println("Echo: " + in.readLine());
+            }
+        } catch (UnknownHostException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
+    }
 
+    public static void main(String[] args) {
         Client client = new Client();
-        client.startConnection(args[0], Integer.parseInt(args[1]));
-        String response = client.sendMessage("test 123");
+        client.connect(args[0], Integer.parseInt(args[1]));
     }
 }
