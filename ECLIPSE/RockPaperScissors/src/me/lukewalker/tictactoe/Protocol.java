@@ -1,0 +1,10 @@
+package me.lukewalker.tictactoe;
+
+public enum Protocol {
+	WAITING_FOR_CLIENT,
+	CLIENT_CONNECTED,
+	TURN_HOST_WAITING,
+	TURN_HOST_PLAYED,
+	TURN_CLIENT_WAITING,
+	TURN_CLIENT_PLAYED
+}
