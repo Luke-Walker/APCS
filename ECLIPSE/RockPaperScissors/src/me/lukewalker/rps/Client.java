@@ -8,6 +8,11 @@ import java.net.Socket;
 
 public class Client {
 
+	/*
+	 * TODO
+	 * - CLIENT COMMUNICATE WITH SERVER/HOST
+	 */
+	
 	private Socket socket;
 	private PrintWriter out;
 	private BufferedReader in, stdIn;
@@ -21,12 +26,28 @@ public class Client {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
+		
+		try {
+			if (stdIn.readLine().equalsIgnoreCase("test")) { Server.changeState(State.WAITING_FOR_CLIENT); System.out.println("my name jeff"); }
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			readPacket(in.readLine());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void readPacket(String msg) {
-		Packet packet = Packet.valueOf(Integer.parseInt(msg.replace("packet:", "").split("{")[0]));
+		String s = msg.replace("packet:", "").substring(0,1);
+		System.out.println(s);
+		Packet packet = Packet.valueOf(Integer.parseInt(s));
 		
-		System.out.println(packet);
+		System.out.println("TESTING 123:" + packet.getValue());
 	}
 	
 	public static void main(String[] args) {
@@ -37,12 +58,15 @@ public class Client {
 		System.out.println(args[0]);
 		
 		if (args[0].equalsIgnoreCase("yes")) {
-			Server server = new Server();
-			server.launch(Integer.parseInt(args[2]));
+			new Thread() {
+				public void run() {
+					Server server = new Server();
+					server.launch(Integer.parseInt(args[2]));
+				}
+			}.start();
 		}
-		
+		System.out.println("LMAO");
 		Client client = new Client();
 		client.connect(args[1], Integer.parseInt(args[2]));
-		
 	}
 }

@@ -14,6 +14,7 @@ public class ServerThread extends Thread {
 	
 	public ServerThread(Socket clientSocket) {
 		this.socket = clientSocket;
+		System.out.print("I AM A CLIENT");
 	}
 	
 	@Override
@@ -24,6 +25,8 @@ public class ServerThread extends Thread {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
+		
+		
 	}
 	
 	public void sendMessage(String msg) {
