@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class Server {
 
 	public static State state;
+	public static ArrayList<ServerThread> clients = new ArrayList<ServerThread>();
 	
-	private ArrayList<ServerThread> clients = new ArrayList<ServerThread>();
 	private ServerSocket serverSocket;
 	private Socket clientSocket;
 	
@@ -23,6 +23,7 @@ public class Server {
 		
 		state = State.STARTED;
 		
+		// HOST CLIENT NEVER CONNECTS BECAUSE OF WHILE LOOP
 		while (true) {
 			try {
 				clientSocket = serverSocket.accept();
@@ -30,7 +31,7 @@ public class Server {
 				ex.printStackTrace();
 			}
 			clients.add(new ServerThread(clientSocket));
-			clients.get(clients.size()).start();
+			clients.get(clients.size()-1).start();
 		}
 	}
 	

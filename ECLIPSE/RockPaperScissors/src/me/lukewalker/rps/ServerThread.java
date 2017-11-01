@@ -27,6 +27,7 @@ public class ServerThread extends Thread {
 	}
 	
 	public void sendMessage(String msg) {
+		System.out.println(msg);
 		out.println(msg);
 	}
 }

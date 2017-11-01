@@ -34,6 +34,7 @@ public class Client {
 			System.out.println("Incorrect arguments.");
 			return;
 		}
+		System.out.println(args[0]);
 		
 		if (args[0].equalsIgnoreCase("yes")) {
 			Server server = new Server();
