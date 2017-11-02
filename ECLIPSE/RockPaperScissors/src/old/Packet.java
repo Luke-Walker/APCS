@@ -1,4 +1,4 @@
-package me.lukewalker.rps;
+package old;
 
 import java.util.HashMap;
 import java.util.Map;
