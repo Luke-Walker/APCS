@@ -32,8 +32,7 @@ public class PictureEditor {
         System.out.println("red:"+red+",green:"+green+",blue:"+blue);
     }
 
-    public static void drawDarkerLine(int y) {
-        int width = 200;
+    public static void drawDarkerLine(int y, int width) {
         for (int x = 0; x < width; x++) {
             int red = 10;
             int blue = 10;
@@ -54,6 +53,23 @@ public class PictureEditor {
     	for (int y3 = y1; y3 < y2; y3++) {
     		for (int x3 = x1; x3 < x2; x3++) {
     			pic.set(x3, y3, new Color(1,1,1));
+    		}
+    	}
+    	
+    	pic.show();
+    }
+    
+    public static void drawTriangle(int x1, int y2, int width, int height) {
+    	if (width % 2 != 0) width++;
+    	
+    	for (int h = 1; h <= height/2; h++) {
+    		for (int l = 1; l <= h; l++) {
+    			pic.set(l, h, new Color(1,1,1));
+    		}
+    	}
+    	for (int h = height/2; h >= 0; h++) {
+    		for (int l = h; l >= 0; l--) {
+    			pic.set(l, h, new Color(1,1,1));
     		}
     	}
     	

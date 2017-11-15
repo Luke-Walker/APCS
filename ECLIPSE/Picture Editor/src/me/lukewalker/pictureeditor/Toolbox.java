@@ -25,9 +25,9 @@ public class Toolbox extends JFrame {
 		super("Toolbox");
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{91, 91, 91, 0};
-		gridBagLayout.rowHeights = new int[]{79, 79, 79, 0, 0};
+		gridBagLayout.rowHeights = new int[]{79, 79, 79, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		getContentPane().setLayout(gridBagLayout);
 		
 		x = new JTextField();
@@ -94,30 +94,39 @@ public class Toolbox extends JFrame {
 		
 		JRadioButton button1 = new JRadioButton("Print Pixel Color");
 		GridBagConstraints gbc_button1 = new GridBagConstraints();
-		gbc_button1.insets = new Insets(0, 0, 0, 5);
+		gbc_button1.insets = new Insets(0, 0, 5, 5);
 		gbc_button1.gridx = 0;
 		gbc_button1.gridy = 3;
 		getContentPane().add(button1, gbc_button1);
 		
 		JRadioButton button2 = new JRadioButton("Draw Darker Line");
 		GridBagConstraints gbc_button2 = new GridBagConstraints();
-		gbc_button2.insets = new Insets(0, 0, 0, 5);
+		gbc_button2.insets = new Insets(0, 0, 5, 5);
 		gbc_button2.gridx = 1;
 		gbc_button2.gridy = 3;
 		getContentPane().add(button2, gbc_button2);
 		
 		JRadioButton button3 = new JRadioButton("Draw Square");
 		GridBagConstraints gbc_button3 = new GridBagConstraints();
+		gbc_button3.insets = new Insets(0, 0, 5, 0);
 		gbc_button3.gridx = 2;
 		gbc_button3.gridy = 3;
 		getContentPane().add(button3, gbc_button3);
+		
+		JRadioButton button4 = new JRadioButton("Draw Triangle");
+		GridBagConstraints gbc_button4 = new GridBagConstraints();
+		gbc_button4.insets = new Insets(0, 0, 0, 5);
+		gbc_button4.gridx = 0;
+		gbc_button4.gridy = 4;
+		getContentPane().add(button4, gbc_button4);
 		
 		ButtonGroup buttons = new ButtonGroup();
 		buttons.add(button1);
 		buttons.add(button2);
 		buttons.add(button3);
+		buttons.add(button4);
 		
-		setSize(357,289);
+		setSize(356,371);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setVisible(true);
@@ -128,9 +137,11 @@ public class Toolbox extends JFrame {
 				if (button1.isSelected()) {
 					PictureEditor.printPixelColors(Integer.parseInt(x.getText()), Integer.parseInt(y.getText()));
 				} else if (button2.isSelected()) {
-					PictureEditor.drawDarkerLine(Integer.parseInt(y.getText()));
+					PictureEditor.drawDarkerLine(Integer.parseInt(y.getText()), Integer.parseInt(width.getText()));
 				} else if (button3.isSelected()) {
 					PictureEditor.drawSquare(Integer.parseInt(x.getText()), Integer.parseInt(y.getText()), Integer.parseInt(width.getText()), Integer.parseInt(height.getText()));
+				} else if (button4.isSelected()) {
+					PictureEditor.drawTriangle(Integer.parseInt(x.getText()), Integer.parseInt(y.getText()), Integer.parseInt(width.getText()), Integer.parseInt(height.getText()));
 				}
 			}
 		});
