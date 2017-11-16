@@ -1,6 +1,7 @@
 package me.lukewalker.pictureeditor;
 
 import java.awt.Color;
+import java.util.HashMap;
 
 
 public class PictureEditor {
@@ -59,17 +60,47 @@ public class PictureEditor {
     	pic.show();
     }
     
-    public static void drawTriangle(int x1, int y2, int width, int height) {
-    	if (width % 2 != 0) width++;
+    public static void drawTriangle(int x, int y, int width, int height) {
+    	if (width % 2 == 1) width++;
     	
-    	for (int h = 1; h <= height/2; h++) {
-    		for (int l = 1; l <= h; l++) {
+    	for (int l = x;  l < width/2+x; l++) {
+    		for (int h = 1; h < height+y; h++) {
     			pic.set(l, h, new Color(1,1,1));
     		}
     	}
-    	for (int h = height/2; h >= 0; h++) {
-    		for (int l = h; l >= 0; l--) {
+    	for (int l = width/2; l < width+x; l++) {
+    		for (int h = height; h > 0; h--) {
     			pic.set(l, h, new Color(1,1,1));
+    		}
+    	}
+    	
+    	pic.show();
+    }
+    
+    public static void reflectX() {
+    }
+    
+    public static void reflectY() {
+    }
+    
+    public static void inverseColors() {
+    	for (int y = 0; y < pic.height(); y++) {
+    		for (int x = 0; x < pic.width(); x++) {
+    			pic.set(x, y, new Color(255-pic.get(x, y).getRed(), 255-pic.get(x, y).getGreen(), 255-pic.get(x, y).getBlue()));
+    		}
+    	}
+    	
+    	pic.show();
+    }
+    
+    public static void grayscale() {
+    	for (int y = 0; y < pic.height(); y++) {
+    		for (int x = 0; x < pic.width(); x++) {
+    			int red = (int)(pic.get(x, y).getRed()*.299);
+    			int green = (int)(pic.get(x, y).getGreen()*.587);
+    			int blue = (int)(pic.get(x, y).getBlue()*.114);
+    			int rgb = red + green + blue;
+    			pic.set(x, y, new Color(rgb, rgb, rgb));	
     		}
     	}
     	
