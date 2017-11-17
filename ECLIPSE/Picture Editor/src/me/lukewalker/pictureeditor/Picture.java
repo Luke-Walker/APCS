@@ -157,6 +157,7 @@ public final class Picture implements ActionListener {
                                      Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
             JMenuItem menuItem2 = new JMenuItem(" Toolbox...   ");
             menuItem2.addActionListener(new ActionListener() {
+            	@Override
             	public void actionPerformed(ActionEvent ev) {
             		new Toolbox();
             	}
@@ -176,6 +177,14 @@ public final class Picture implements ActionListener {
 
         // draw
         frame.repaint();
+    }
+    
+    public String getFile() {
+    	return filename;
+    }
+    
+    public JFrame getFrame() {
+    	return frame;
     }
 
    /**
