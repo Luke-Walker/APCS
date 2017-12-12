@@ -1,0 +1,4 @@
+1. extract PictureEditor.zip
+2. run PictureEditor.jar
+
+src: source files
