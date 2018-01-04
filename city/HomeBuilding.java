@@ -8,4 +8,9 @@ public class HomeBuilding extends Building {
         super();
         this.residents = residents;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " : " + residents + " residents";
+    }
 }
