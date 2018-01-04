@@ -20,6 +20,7 @@ public class Building {
 
     private String address;
     private int width, length, height;
+    private double value;
 
     public Building() {
         Random rand = new Random();
@@ -35,10 +36,15 @@ public class Building {
         this.width = width;
         this.height = height;
         this.length = length;
+        this.value = width*height*length;
 
         if (number%10 == 0) addressPlace++;
 
         buildings.add(this);
+    }
+
+    public double getValue() {
+        return value;
     }
 
     @Override

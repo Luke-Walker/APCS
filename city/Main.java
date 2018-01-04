@@ -8,5 +8,11 @@ public class Main {
                 System.out.println(new Building());
             }
         }
+
+        Player player = Player.getInstance();
+
+        while (true) {
+            
+        }
     }
 }
