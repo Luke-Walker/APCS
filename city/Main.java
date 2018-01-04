@@ -1,5 +1,7 @@
 package city;
 
+import java.util.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -11,8 +13,18 @@ public class Main {
 
         Player player = Player.getInstance();
 
+        Scanner scan = new Scanner(System.in);
+
         while (true) {
-            
+            System.out.println("Money: $" + player.getMoney() + " | Property: $" + (player.getNetWorth()-player.getMoney()) + " | Net Worth: $" + player.getNetWorth());
+            System.out.println("1. Review property");
+
+            switch (Integer.parseInt(scan.nextLine())) {
+                case 1:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

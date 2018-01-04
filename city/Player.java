@@ -10,6 +10,7 @@ public class Player {
 
     private Player() {
         money = 100000;
+        updateNetWorth();
     }
     private static Player INSTANCE = null;
     public static Player getInstance() {
@@ -32,5 +33,17 @@ public class Player {
         for (Building b : property) propertyValue += b.getValue();
         for (Vehicle v : vehicles) propertyValue += v.getValue();
         netWorth = money + propertyValue;
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public double getPropertyValue() {
+        return getNetWorth()-getMoney();
+    }
+
+    public double getNetWorth() {
+        return netWorth;
     }
 }
