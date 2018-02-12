@@ -52,7 +52,20 @@ public class Sound
  * Postcondition: the length of samples reflects the removal of starting silence
  */
  public void trimSilenceFromBeginning()
- { /* to be implemented in part (b) */ 
+ { /* to be implemented in part (b) */
+     int count = 0;
+     for (int i = 0; i < samples.length; i++) {
+         int sample = samples[i];
+         if (sample == 0) count++;
+         else break;
+     }
+
+     int[] trim = new int[samples.length-count];
+     for (int i = count; i < samples.length; i++) {
+         trim[i-count] = samples[i];
+     }
+
+     samples = trim;
  }
 
  // There may be instance variables, constructors, and methods that are not shown.

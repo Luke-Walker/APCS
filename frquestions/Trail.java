@@ -27,7 +27,17 @@ public class Trail
  */
  public boolean isLevelTrailSegment(int start, int end)
  { /* to be implemented in part (a) */
-   return false;
+     int min = markers[start];
+     int max = markers[start];
+
+     for (int i = start+1; i < end; i++) {
+         int marker = markers[i];
+
+         if (marker < min) min = marker;
+         if (marker > max) max = marker;
+     }
+
+     return max-min <= 10;
  }
 
 
@@ -38,7 +48,16 @@ public class Trail
  */
  public boolean isDifficult()
  { /* to be implemented in part (b) */
-   return false;
+     int count = 0;
+     int last = markers[0];
+
+     for (int i = 1; i < markers.length; i++) {
+        int marker = markers[i];
+
+        if (Math.abs(marker-last) >= 30) count++;
+     }
+
+     return count >= 3;
  }
 
 
