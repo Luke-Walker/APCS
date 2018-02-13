@@ -55,6 +55,8 @@ public class Trail
         int marker = markers[i];
 
         if (Math.abs(marker-last) >= 30) count++;
+
+        last = marker;
      }
 
      return count >= 3;
