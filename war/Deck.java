@@ -47,7 +47,24 @@ public class Deck {
       Card card = cards[index];
       cards[index] = null;
 
+      for (int i = 1; i < cards.length; i++) {
+          cards[i-1] = cards[i];
+          cards[i] = null;
+      }
+
       return card;
+  }
+
+  public void add(Card card) {
+      int index = 0;
+      for (int i = 0; i < cards.length; i++) {
+          if (cards[i] != null) {
+              index++;
+          }
+      }
+
+      if (index == 52 && cards[51] == null) index--;
+      if (cards[index] == null) cards[index] = card;
   }
 
   /* Returns a String of all Cards in the Deck */

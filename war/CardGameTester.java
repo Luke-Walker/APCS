@@ -14,6 +14,12 @@ public class CardGameTester {
     System.out.println("\nModified Deck:");
     System.out.println(deck);
 
+    /*
+    System.out.println("\nAdding A Card:");
+    deck.add(new Card("hearts", 4));
+    System.out.println(deck);
+    */
+
   }
 
 }
