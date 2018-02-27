@@ -14,24 +14,32 @@ public class MagicSquares {
     public static int[][] square = null;
 
     public static void main(String[] args) {
-        if (args.length >= 1) {
-            switch (args[0]) {
-                case "3x3":
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Select an option:");
+        System.out.println("1. 3x3");
+        System.out.println("2. 4x4");
+        System.out.println("3. Custom");
+        System.out.println("4. Exit");
+
+        while (square == null) {
+            switch (scan.nextLine()) {
+                case "1":
                     square = threeByThree;
                     break;
-                case "4x4":
+                case "2":
                     square = fourByFour;
                     break;
+                case "3":
+                    System.out.print("Enter dimension for Magic Square: ");
+                    square = createMagicSquare(Integer.parseInt(scan.nextLine()));
+                    System.out.println();
+                    break;
+                case "4":
+                    System.exit(0);
                 default:
                     break;
             }
-        }
-
-        if (square == null) {
-            Scanner scan = new Scanner(System.in);
-            System.out.print("Enter dimension for Magic Square: ");
-            square = createMagicSquare(Integer.parseInt(scan.nextLine()));
-            System.out.println();
         }
 
         System.out.println(checkMagicSquare(square) ? "That is a Magic Square." : "That is not a Magic Square.");
