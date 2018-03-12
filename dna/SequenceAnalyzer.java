@@ -2,7 +2,10 @@ public class SequenceAnalyzer {
 
     public static final String[][] organisms = {{"TCCAAACCCAGCTCTATTTTAGTGGTCATGGGTTCTGGTCCCCCCGAGCC"},
                                                 {"TCCAAACCCAGCTCTAATTAAGTGGTCAAGCGTTCTGGTCCCCCCGAGGC"},
-                                                {"AAACCCCTCTAGTGGTCATCTGGTCCGCCGAGC"}};
+                                                {"AAACCCCTCTAGTGGTCATCTGGTCCGCCGAGC"},
+                                                {"TCCAACCTCAGCTCTCTTTCAGTGGTCATGGGTTCTGGTACCACCGGACC"},
+                                                {"TTCAAATCCAGCTCTGTTTTAGTAGCCATGGGTTCTGGCCCCCCCGAGCC"},
+                                                {"CCCAAACCCATCTCTAGTTTCGTGGGCATGGGTTTTGGTCACCCCTAGCC"}};
 
     public static void main(String[] args) {
         // #1
@@ -11,6 +14,9 @@ public class SequenceAnalyzer {
 
         // #2
 
+
+        // #4
+        
 
         // #3
 
