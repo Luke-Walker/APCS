@@ -16,7 +16,23 @@ public class SequenceAnalyzer {
 
 
         // #4
-        
+        double highest = 0;
+        int seq1 = 0;
+        int seq2 = 0;
+        for (int i = 0; i < organisms.length-1; i++) {
+            for (int j = 0; j < organisms.length; j++) {
+                if (i == 2 || j == 2 || i == j) continue;
+
+                double similarity = calculateSimilarity(organisms[i], organisms[j]);
+
+                if (similarity > highest) {
+                    highest = similarity;
+                    seq1 = i;
+                    seq2 = j;
+                }
+            }
+        }
+        System.out.println("Largest similarity within the organisms is " + highest + "% between Organism #" + seq1 + " (" + organisms[seq1][0] + ") and Organism #" + seq2 + " (" + organisms[seq2][0] + ").\n\n");
 
         // #3
 
