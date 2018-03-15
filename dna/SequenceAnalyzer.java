@@ -15,6 +15,9 @@ public class SequenceAnalyzer {
         // #2
 
 
+        // #3
+
+
         // #4
         double highest = 0;
         int seq1 = 0;
@@ -33,9 +36,6 @@ public class SequenceAnalyzer {
             }
         }
         System.out.println("Largest similarity within the organisms is " + highest + "% between Organism #" + seq1 + " (" + organisms[seq1][0] + ") and Organism #" + seq2 + " (" + organisms[seq2][0] + ").\n\n");
-
-        // #3
-
 
         // #9
         System.out.println("Longest Match between (" + organisms[0][0] + ") and (" + organisms[2][0] + "):");
