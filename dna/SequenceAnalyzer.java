@@ -7,7 +7,7 @@ public class SequenceAnalyzer {
         #3 (8): incomplete
         #4 (3): done
         #5 (2): done
-        #8 (2): incomplete (fix)
+        #8 (2): incomplete (almost done, fix)
     */
 
     public static final char[][] organisms = {{'T', 'C', 'C', 'A', 'A', 'A', 'C', 'C', 'C', 'A', 'G', 'C', 'T', 'C', 'T', 'A', 'T', 'T', 'T', 'T', 'A', 'G', 'T', 'G', 'G', 'T', 'C', 'A', 'T', 'G', 'G', 'G', 'T', 'T', 'C', 'T', 'G', 'G', 'T', 'C', 'C', 'C', 'C', 'C', 'C', 'G', 'A', 'G', 'C', 'C'},
