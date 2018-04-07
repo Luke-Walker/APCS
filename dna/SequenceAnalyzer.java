@@ -1,13 +1,15 @@
+import java.util.Random;
+
 public class SequenceAnalyzer {
 
     /*
-        points: 21/30
+        points: 31/30
         #1 (8): done
         #2 (8): done
-        #3 (8): incomplete
+        #3 (8): done
         #4 (3): done
         #5 (2): done
-        #8 (2): incomplete (almost done, fix)
+        #7 (2): done
     */
 
     public static final char[][] organisms = {{'T', 'C', 'C', 'A', 'A', 'A', 'C', 'C', 'C', 'A', 'G', 'C', 'T', 'C', 'T', 'A', 'T', 'T', 'T', 'T', 'A', 'G', 'T', 'G', 'G', 'T', 'C', 'A', 'T', 'G', 'G', 'G', 'T', 'T', 'C', 'T', 'G', 'G', 'T', 'C', 'C', 'C', 'C', 'C', 'C', 'G', 'A', 'G', 'C', 'C'},
@@ -40,9 +42,6 @@ public class SequenceAnalyzer {
         if (containsSequence(organisms[0], new char[]{'C','C','G','A','G','C'}) && containsSequence(organisms[1], new char[]{'C','C','G','A','G','C'})) System.out.println("CCGAGC");
         System.out.println("\n");
 
-        // #3
-
-
         // #4
         double highest = 0;
         int org1 = 0;
@@ -62,11 +61,9 @@ public class SequenceAnalyzer {
         }
         System.out.println("Largest similarity within the organisms is " + highest + "% between Organism #" + (org1+1) + " and Organism #" + (org2+1) + ".\n\n");
 
-        // #8
-        char[][] cross = crossOrganisms(organisms[0], organisms[1]);
-        System.out.println("Organism #1 x Organism #2:");
-        System.out.println(organismToString(cross[0]));
-        System.out.println(organismToString(cross[1]));
+        // #7
+		char[] mutated = mutate(organisms[0], 10);
+		System.out.println("Mutated Organism #1: " + organismToString(mutated) + " which is " + calculateSimilarity(organisms[0], mutated) + "% similar with the original Organism #1.");
     }
 
     // #2
@@ -84,7 +81,7 @@ public class SequenceAnalyzer {
 
         return false;
     }
-
+	
     // #5
     public static double calculateSimilarity(char[] org1, char[] org2) {
         int similarities = 0;
@@ -95,25 +92,26 @@ public class SequenceAnalyzer {
         return (double)similarities/org1.length*100;
     }
 
-    // #8 *FIX*
-    public static char[][] crossOrganisms(char[] seq1, char[] seq2) {
-        char[] cross1 = new char[seq1.length];
-        char[] cross2 = new char[seq2.length];
-
-        for (int i = 0; i < seq1.length/2; i++)
-            cross1[i] = seq1[i];
-
-        for (int i = seq1.length/2; i < seq1.length; i++)
-            cross2[i] = seq2[i];
-
-        for (int i = 0; i < seq2.length/2; i++)
-            cross2[i] = seq2[i];
-
-        for (int i = seq2.length/2; i < seq2.length; i++)
-            cross1[i] = seq2[i];
-
-        return new char[][]{cross1, cross2};
-    }
+    // #7
+	public static char[] mutate(char[] seq, int chance) {
+		char[] new_seq = new char[seq.length];
+		for (int i = 0; i < new_seq.length; i++) new_seq[i] = seq[i];
+		
+		Random rand = new Random();
+		for (int i = 0; i < seq.length; i++) {
+			char c = seq[i];
+			
+			if (rand.nextInt(100) <= chance) {
+				int index = rand.nextInt(seq.length);
+				char replace = seq[index];
+				
+				new_seq[index] = c;
+				new_seq[i] = replace;
+			}
+		}
+		
+		return new_seq;
+	}
 
     public static String organismToString(char[] org) {
         String str = "";
