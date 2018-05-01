@@ -12,16 +12,15 @@ public class Starfield extends JPanel {
     static final int MAX_SPEED = 3;
     static final int NUM_STARS = 50;
     static final int MOVING_STARS = 25;
+    static final int NUM_PLANETS = 5;
     static final int NUM_ASTEROIDS = 10;
 
-    ArrayList<SpaceObject> spaceObjects = new ArrayList<SpaceObject>();
+    public static ArrayList<SpaceObject> spaceObjects = new ArrayList<SpaceObject>();
+    public static ArrayList<Collidable> collidableObjects = new ArrayList<Collidable>();
 
     public static void main(String[] args) {
-        // #1 Create the JFrame
-        // * Create the Starfield object
-        // * Add the Starfield object to the JFrame
         JFrame frame = new JFrame(TITLE);
-        frame.setSize(500,500);
+        frame.setSize(FIELD_WIDTH, FIELD_HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
@@ -29,42 +28,56 @@ public class Starfield extends JPanel {
         Starfield sf = new Starfield();
         frame.add(sf);
 
-        // #4 Add NUM_STARS Stars to spaceObjects ArrayList (after creating Star class)
-        // * Add MOVING_STARS MovingStars to spaceObjects ArrayList (after creating MovingStar class)
-
-        for (int i = 0; i < NUM_STARS; i++) sf.spaceObjects.add(new Star());
+        Random rand = new Random();
+        for (int i = 0; i < NUM_STARS; i++) {
+            if (rand.nextInt(5) == 1) sf.spaceObjects.add(new DimmingStar());
+            else sf.spaceObjects.add(new Star());
+        }
         for (int i = 0; i < MOVING_STARS; i++) sf.spaceObjects.add(new MovingStar());
-
-        // #5 while loop for the animation loop
-        /*
-        while(true) {
-        for (SpaceObject spaceObj : spaceObjects) {
-        if (spaceObj instanceof MovingStar) {
-        // * call the move() method for spaceObj */
+        for (int i = 0; i < NUM_PLANETS; i++) sf.spaceObjects.add(new Planet());
+        for (int i = 0; i < NUM_ASTEROIDS; i++) sf.spaceObjects.add(new Asteroid());
 
         while (true) {
+            System.out.println(sf.spaceObjects.get(sf.spaceObjects.size()-1).getX() + " | " + sf.spaceObjects.get(sf.spaceObjects.size()-1).getY());
+            System.out.println(sf.spaceObjects.get(sf.spaceObjects.size()-1) instanceof Asteroid);
+            System.out.println(((MovingObject)sf.spaceObjects.get(sf.spaceObjects.size()-1)).getSpeed());
             for (SpaceObject obj : sf.spaceObjects) {
-                if (obj instanceof Star) {
-
+                if (obj instanceof MovingObject) {
+                    ((MovingObject)obj).move();
                 }
-                if (obj instanceof MovingStar) {
+                if (obj instanceof Collidable) {
+                    if (!sf.collidableObjects.contains(obj)) sf.collidableObjects.add((Collidable)obj);
 
+                    for (Collidable other : sf.collidableObjects) {
+                        if (obj != other) {
+                            ((Collidable)obj).collide(other);
+                        }
+                    }
                 }
+                if (obj instanceof DimmingStar) {
+                    ((DimmingStar)obj).dim();
+                }
+            }
+            sf.repaint();
+            try {
+                Thread.sleep(10);
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
         }
     }
 
     public void paint(Graphics g) {
-
-        // #6
-
-        // * update the background to clear the previous frame
-
-        // * create a for loop to go through all of spaceObjects and draw each object
+        setOpaque(true);
+        setBackground(Color.BLACK);
 
         super.paintComponent(g);
-    }
 
+        for (SpaceObject obj : spaceObjects) {
+            g.setColor(obj.getColor());
+            g.fillOval(obj.getX(), obj.getY(), obj.getDiameter(), obj.getDiameter());
+        }
+    }
 }
 
 abstract class SpaceObject {
@@ -111,17 +124,13 @@ abstract class MovingObject extends SpaceObject {
     }
 
     public int getSpeed() { return dx; }
-
+    public void setSpeed(int dx) { this.dx = dx; }
 }
 
 interface Collidable {
 
     public void collide(Collidable other);
 }
-
-/*
-#2 Create a Star class that extends SpaceObject
-*/
 
 class Star extends SpaceObject {
 
@@ -130,10 +139,6 @@ class Star extends SpaceObject {
     }
 }
 
-/*
-#3 Create a MovingStar class that extendsd MovingObject
-*/
-
 class MovingStar extends MovingObject {
 
     public MovingStar() {
@@ -141,21 +146,56 @@ class MovingStar extends MovingObject {
     }
 }
 
-/*
-#7 Create a new DimmingStar class that extends Star.
+class DimmingStar extends Star {
 
-DimmingStar should dim to a certain level of brightness and then brighten
-to a certain level of brightness and repeat.
+    private static final int MINIMUM_COLOR = 50;
+    private static final int MAXIMUM_COLOR = 225;
 
-DimmingStar will have a instance variable called dimmingFactor
+    private double dimmingFactor;
 
-One approach is to have your dimmingFactor begin at a value like 0.99999
+    public DimmingStar() {
+        super();
+        dimmingFactor = .9;
+    }
 
-•	In the move() method, get the red, green, and blue values from
-the star’s color (int red = color.getRed() …).
-•	Then, multiply the red, green, blue by the dimmingFactor.
-•	If the brightness gets low enough for red, green, blue, then have
-the dimmingFactor change to be greater than 1.0
+    public void dim() {
+        double red = getColor().getRed()*dimmingFactor;
+        double green = getColor().getGreen()*dimmingFactor;
+        double blue = getColor().getBlue()*dimmingFactor;
 
-Add DimmingStars into your Starfield
-*/
+        setColor(new Color((int)red, (int)green, (int)blue));
+
+        if (red <= MINIMUM_COLOR || green <= MINIMUM_COLOR || blue <= MINIMUM_COLOR) dimmingFactor = 1.1;
+        else if (red >= MAXIMUM_COLOR || green >= MAXIMUM_COLOR || blue >= MAXIMUM_COLOR) dimmingFactor = .9;
+    }
+}
+
+class Planet extends SpaceObject implements Collidable {
+
+    public Planet() {
+        super();
+    }
+
+    @Override
+    public void collide(Collidable other) { }
+}
+
+class Asteroid extends MovingObject implements Collidable {
+
+    public Asteroid() {
+        super();
+    }
+
+    @Override
+    public void collide(Collidable other) {
+        SpaceObject obj;
+        if (other instanceof SpaceObject) {
+            obj = (SpaceObject)other;
+            if (Math.sqrt( ((getX()-obj.getX())^2) + ((getY()-obj.getY())^2) ) < obj.getDiameter()/2) {
+                setSpeed(0);
+                setX(-1000);
+                System.out.println("COLLISION");
+            }
+        }
+    }
+}
