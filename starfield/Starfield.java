@@ -18,11 +18,15 @@ public class Starfield extends JPanel {
     public static ArrayList<SpaceObject> spaceObjects = new ArrayList<SpaceObject>();
     public static ArrayList<Collidable> collidableObjects = new ArrayList<Collidable>();
 
+    public static int x = 0;
+    public static int y = 0;
+
     public static void main(String[] args) {
         JFrame frame = new JFrame(TITLE);
         frame.setSize(FIELD_WIDTH, FIELD_HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
         frame.setVisible(true);
 
         Starfield sf = new Starfield();
@@ -38,9 +42,6 @@ public class Starfield extends JPanel {
         for (int i = 0; i < NUM_ASTEROIDS; i++) sf.spaceObjects.add(new Asteroid());
 
         while (true) {
-            System.out.println(sf.spaceObjects.get(sf.spaceObjects.size()-1).getX() + " | " + sf.spaceObjects.get(sf.spaceObjects.size()-1).getY());
-            System.out.println(sf.spaceObjects.get(sf.spaceObjects.size()-1) instanceof Asteroid);
-            System.out.println(((MovingObject)sf.spaceObjects.get(sf.spaceObjects.size()-1)).getSpeed());
             for (SpaceObject obj : sf.spaceObjects) {
                 if (obj instanceof MovingObject) {
                     ((MovingObject)obj).move();
@@ -60,7 +61,7 @@ public class Starfield extends JPanel {
             }
             sf.repaint();
             try {
-                Thread.sleep(10);
+                Thread.sleep(50);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -74,9 +75,13 @@ public class Starfield extends JPanel {
         super.paintComponent(g);
 
         for (SpaceObject obj : spaceObjects) {
-            g.setColor(obj.getColor());
+            if (obj instanceof Asteroid) g.setColor(Color.GREEN);
+            else g.setColor(obj.getColor());
             g.fillOval(obj.getX(), obj.getY(), obj.getDiameter(), obj.getDiameter());
         }
+
+        g.setColor(Color.BLUE);
+        g.fillOval(x, y, 10, 10);
     }
 }
 
@@ -92,6 +97,7 @@ abstract class SpaceObject {
         y = (int)(Math.random()*Starfield.FIELD_HEIGHT);
         diameter = (int)(Math.random()*Starfield.MAX_DIAMETER);
         int brightness = (int)(Math.random()*255);
+        if (brightness < 50) brightness = 50;
         color = new Color(brightness, brightness, brightness);
     }
 
@@ -174,6 +180,7 @@ class Planet extends SpaceObject implements Collidable {
 
     public Planet() {
         super();
+        setColor(Color.RED);
     }
 
     @Override
@@ -190,8 +197,11 @@ class Asteroid extends MovingObject implements Collidable {
     public void collide(Collidable other) {
         SpaceObject obj;
         if (other instanceof SpaceObject) {
-            obj = (SpaceObject)other;
+            obj = (SpaceObject) other;
             if (Math.sqrt( ((getX()-obj.getX())^2) + ((getY()-obj.getY())^2) ) < obj.getDiameter()/2) {
+                Starfield field = new Starfield();
+                field.x = getX();
+                field.y = getY();
                 setSpeed(0);
                 setX(-1000);
                 System.out.println("COLLISION");
