@@ -10,6 +10,13 @@ public class Successors {
     }
 
     public static Position[][] getSuccessorArray(int[][] arr) {
-        return null;
+        Position[][] positions = new Position[arr.length][arr.length];
+        for (int i = 0; i < positions.length; i++) {
+            for (int j = 0; j < positions[i].length; j++) {
+                int num = arr[i][j];
+                positions[i][j] = findPosition(num+1, arr);
+            }
+        }
+        return positions;
     }
 }

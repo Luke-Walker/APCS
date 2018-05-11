@@ -7,5 +7,8 @@ public class Main {
     public static void main(String[] args) {
         Position pos = Successors.findPosition(16, numArray);
         System.out.println(pos.getR() + " | " + pos.getC());
+
+        Position[][] positions = Successors.getSuccessorArray(numArray);
+        System.out.println(positions[0][1].getR() + " | " + positions[0][1].getC());
     }
 }
