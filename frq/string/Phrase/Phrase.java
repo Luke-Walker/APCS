@@ -24,26 +24,25 @@ public class Phrase {
     }
 
     public void replaceNthOccurrence(String str, int n, String repl) {
-        /*int index = findNthOccurrence(str, n);
-        System.out.println(index);
-        String s = phrase.substring(0, index + (index == 0 ? str.length() : 0));
-        System.out.println(s);
-        s += repl;
-        System.out.println(s);
-        s += phrase.substring(s.length()-str.length(), phrase.length());
-        phrase = s;*/
-
         // 3
         int index = findNthOccurrence(str, n);
-
         // "A c"
         String s = phrase.substring(0, index);
         // "A crane"
         s += repl;
+        // "A crane ate late."
+        s += phrase.substring(s.length() + (str.length()-repl.length()), phrase.length());
+
+        phrase = s;
     }
 
     public int findLastOccurrence(String str) {
-        return 0;
+        for (int i = phrase.length(); i > 0; i--) {
+          if (findNthOccurrence(str, i) != -1) {
+            return findNthOccurrence(str, i);
+          }
+        }
+        return -1;
     }
 
     public String toString() {
