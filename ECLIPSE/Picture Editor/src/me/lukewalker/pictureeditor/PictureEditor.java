@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 public class PictureEditor {
     
+	// SET TO TRUE TO FIX RED-EYE
+	private static final boolean FIX_REDEYE = true;
+	
     static Picture pic;
     
     public static Color color = new Color(1,1,1);
@@ -13,9 +16,11 @@ public class PictureEditor {
     public static void main(String[] args) {
         
         args = new String[1];
-        args[0] = "javapic.jpg";
+        args[0] = "picture.jpg";
         
         pic = new Picture(args[0]);
+        
+        if (FIX_REDEYE) fixRedeye();
         
         //System.out.println(pic.width() + "w x " + pic.height()+"h");
         
@@ -27,6 +32,13 @@ public class PictureEditor {
             
     }
     
+    public static void fixRedeye() {
+    	for (int x = 185; x < 205; x++) {
+    		for (int y = 170; y < 190; y++) {
+    			if (pic.get(x, y).getRed() > 50) pic.set(x, y, new Color(25,25,25));
+    		}
+    	}
+    }
     
     public static void printPixelColors(int x, int y) {
         Color pixelColor = pic.get(x, y);
