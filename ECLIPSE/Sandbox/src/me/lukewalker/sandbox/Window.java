@@ -2,7 +2,6 @@ package me.lukewalker.sandbox;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
@@ -10,11 +9,13 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import me.lukewalker.sandbox.entities.Entity;
+
 public class Window extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	private static final int WIDTH = 500;
-	private static final int HEIGHT = 500;
+	private static final int WIDTH = 1000;
+	private static final int HEIGHT = 1000;
 	
 	private Window() {}
 	private static Window INSTANCE = null;
@@ -42,7 +43,9 @@ public class Window extends JPanel {
 		setBackground(Color.GRAY);
 		super.paintComponent(g);
 		
-		render(g, Game.getInstance().player.getSprite(), Game.getInstance().player.getX(), Game.getInstance().player.getY());
+		for (Entity e : Game.getInstance().entities) {
+			render(g, e.getSprite(), e.getX(), e.getY());
+		}
 	}
 	
 	public void render(Graphics g, URL sprite, int x, int y) {

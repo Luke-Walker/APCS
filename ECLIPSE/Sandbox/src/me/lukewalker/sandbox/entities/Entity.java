@@ -5,16 +5,16 @@ import java.net.URL;
 import me.lukewalker.sandbox.Game;
 
 public abstract class Entity {
-
+	
 	private String name;
 	private int x, y;
 	private URL sprite;
 	
-	public Entity(String name, int x, int y, URL sprite) {
+	public Entity(String name, int x, int y, String sprite) {
 		this.name = name;
 		this.x = x;
 		this.y = y;
-		this.sprite = sprite;
+		this.sprite = getClass().getResource("/resources/images/entities/" + sprite);
 		
 		Game.getInstance().entities.add(this);
 	}
@@ -28,5 +28,8 @@ public abstract class Entity {
 	public int getY() { return y; }
 	public URL getSprite() { return sprite; }
 	
-	public abstract void move();
+	public void setX(int x) { this.x = x; }
+	public void setY(int y) { this.y = y; }
+	
+	public abstract void move(String direction, int steps);
 }

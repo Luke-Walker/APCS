@@ -22,12 +22,13 @@ public class Game {
 	public static ArrayList<Entity> entities = new ArrayList<Entity>();
 	
 	public static void main(String[] args) {
-		player = new EntityPlayer(args[0], 250, 250, Game.class.getResource("/resources/images/player.png"));
+		player = new EntityPlayer(args[0], 250, 250);
+		
+		
 	
 		Window.getInstance().display();
 		
 		while (true) {
-			
 		}
 	}
 }
