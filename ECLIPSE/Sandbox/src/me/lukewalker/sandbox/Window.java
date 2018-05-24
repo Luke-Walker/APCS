@@ -2,13 +2,16 @@ package me.lukewalker.sandbox;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import me.lukewalker.sandbox.data.DataManager;
 import me.lukewalker.sandbox.entities.Entity;
 
 public class Window extends JPanel {
@@ -35,6 +38,19 @@ public class Window extends JPanel {
 		frame.setVisible(true);
 		
 		frame.add(INSTANCE);
+		
+		if (DataManager.getInstance().getSetting("Path").equals("null")) {
+			JFileChooser chooser = new JFileChooser();
+			chooser.setCurrentDirectory(new File("."));
+			chooser.setDialogTitle("Select Home Directory");
+			chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+			
+			chooser.setAcceptAllFileFilterUsed(false);
+			
+			if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+				DataManager.getInstance().setDataLocation(chooser.getSelectedFile() == null ? chooser.getCurrentDirectory() : chooser.getSelectedFile());
+			}
+		}
 	}
 	
 	@Override
