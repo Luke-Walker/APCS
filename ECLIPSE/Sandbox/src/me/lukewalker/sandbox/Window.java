@@ -30,22 +30,25 @@ public class Window extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(false);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setUndecorated(true);
 		frame.setVisible(true);
 		
 		frame.add(INSTANCE);
-		
-		
 	}
 	
 	@Override
 	public void paint(Graphics g) {
-		setOpaque(true);
-		setBackground(Color.GRAY);
 		super.paintComponent(g);
 		
-		for (Entity e : Game.getInstance().entities) {
+		setOpaque(true);
+		setBackground(Color.GRAY);
+		
+		for (Entity e : Entity.entities) {
 			render(g, e.getSprite(), e.getX(), e.getY());
 		}
+		
+		repaint();
 	}
 	
 	public void render(Graphics g, URL sprite, int x, int y) {

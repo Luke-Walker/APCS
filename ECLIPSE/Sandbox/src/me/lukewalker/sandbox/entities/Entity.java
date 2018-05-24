@@ -1,35 +1,48 @@
 package me.lukewalker.sandbox.entities;
 
 import java.net.URL;
+import java.util.ArrayList;
 
-import me.lukewalker.sandbox.Game;
-
-public abstract class Entity {
+public class Entity {
 	
-	private String name;
+	public static ArrayList<Entity> entities = new ArrayList<>();
+	
+	public static ArrayList<Entity> getEntities(EntityType type) {
+		ArrayList<Entity> entities = new ArrayList<Entity>();
+		
+		for (Entity e : Entity.entities) {
+			if (e.getType() == type) entities.add(e);
+		}
+		
+		return entities;
+	}
+	
+	private EntityType type;
 	private int x, y;
 	private URL sprite;
 	
-	public Entity(String name, int x, int y, String sprite) {
-		this.name = name;
+	public Entity(EntityType type, int x, int y, URL sprite) {
+		this.type = type;
 		this.x = x;
 		this.y = y;
-		this.sprite = getClass().getResource("/resources/images/entities/" + sprite);
+		this.sprite = sprite;
 		
-		Game.getInstance().entities.add(this);
+		entities.add(this);
+	}
+	
+	public void move(String direction, int steps) {
+		type.move(this, direction, steps);
 	}
 	
 	public void destroy() {
-		Game.getInstance().entities.remove(this);
+		entities.remove(this);
 	}
 	
-	public String getName() { return name; }
+	public EntityType getType() { return type; }
 	public int getX() { return x; }
 	public int getY() { return y; }
 	public URL getSprite() { return sprite; }
 	
 	public void setX(int x) { this.x = x; }
 	public void setY(int y) { this.y = y; }
-	
-	public abstract void move(String direction, int steps);
 }
