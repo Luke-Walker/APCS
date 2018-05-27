@@ -1,10 +1,10 @@
 package me.lukewalker.sandbox;
 
-import java.util.Scanner;
-
 import me.lukewalker.sandbox.data.DataManager;
 import me.lukewalker.sandbox.entities.Entity;
 import me.lukewalker.sandbox.entities.EntityPlayer;
+import me.lukewalker.sandbox.events.EventManager;
+import me.lukewalker.sandbox.events.PlayerPickUpItemEvent;
 import me.lukewalker.sandbox.plugins.PluginLoader;
 
 public class Game {
@@ -22,6 +22,7 @@ public class Game {
 	public static Entity player = null;
 	
 	public static void main(String[] args) {
+		DataManager.getInstance().createFiles();
 		try {
 			DataManager.getInstance().loadSettings();
 		} catch (Exception ex) {
@@ -29,7 +30,6 @@ public class Game {
 		}
 		
 		Window.getInstance().display();
-		DataManager.getInstance().createFiles();
 			
 		final EntityPlayer entityPlayer = new EntityPlayer();
 		
@@ -49,6 +49,6 @@ public class Game {
 	}
 	
 	private static void initEvents() {
-		
+		EventManager.registerEvent(new PlayerPickUpItemEvent());
 	}
 }

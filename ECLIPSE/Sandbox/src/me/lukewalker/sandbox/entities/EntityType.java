@@ -3,6 +3,8 @@ package me.lukewalker.sandbox.entities;
 import java.net.URL;
 import java.util.ArrayList;
 
+import me.lukewalker.sandbox.items.Item;
+
 public abstract class EntityType {
 	
 	public static ArrayList<EntityType> entityTypes = new ArrayList<>();
@@ -10,10 +12,9 @@ public abstract class EntityType {
 	private URL sprite;
 	
 	public EntityType() {
-		super();
-		
-		sprite = getClass().getResource("/resources/images/entities/" + getSprite());
-		
+		if (this instanceof Item) sprite = getClass().getResource("/resources/images/items/" + getSprite());
+		else sprite = getClass().getResource("/resources/images/entities/" + getSprite());
+			
 		entityTypes.add(this);
 	}
 	

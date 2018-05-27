@@ -1,11 +1,17 @@
 package me.lukewalker.sandbox.entities;
 
+import java.util.ArrayList;
+
+import me.lukewalker.sandbox.items.Item;
+
 public class EntityPlayer extends EntityType {
 	
-	public EntityPlayer() {
-		super();
-	}
+	private ArrayList<Item> inventory = new ArrayList<>();
 
+	public void addItem(Item item) { inventory.add(item); }
+	public void removeItem(Item item) { inventory.remove(item); }
+	public boolean hasItem(Item item) { return inventory.contains(item); }
+	
 	@Override
 	public void move(Entity ent, String direction, int steps) {
 		if (direction.equals("up")) ent.setY(ent.getY()-steps);

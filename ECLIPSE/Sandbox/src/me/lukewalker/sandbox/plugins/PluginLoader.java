@@ -51,6 +51,7 @@ public class PluginLoader {
 	// TODO: MAKE SURE ONLY .JAR FILES ARE BEING LOADED
 	public Class<?>[] loadDirectory(File dir, String config) throws ClassNotFoundException, IOException {
 		final File[] files = dir.listFiles();
+		for (File f : files) System.out.println(f.getName());
 		
 		final Class<?>[] classes = new Class<?>[files.length];
 		

@@ -6,15 +6,9 @@ public abstract class CustomEvent {
 	
 	public static ArrayList<CustomEvent> events = new ArrayList<>();
 	
-	private Event type;
-	
-	public CustomEvent(Event type) {
-		super();
-		
-		this.type = type;
-		
+	public CustomEvent() {
 		events.add(this);
 	}
 	
-	public Event getType() { return type; }
+	public abstract Event getType();
 }

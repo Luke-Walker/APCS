@@ -3,6 +3,9 @@ package me.lukewalker.sandbox.events;
 import java.util.HashMap;
 
 import me.lukewalker.sandbox.entities.Entity;
+import me.lukewalker.sandbox.events.type.EntityCollisionEvent;
+import me.lukewalker.sandbox.events.type.EntitySpawnedEvent;
+import me.lukewalker.sandbox.events.type.TakeDamageEvent;
 
 public class EventManager {
 	
@@ -15,6 +18,9 @@ public class EventManager {
 				} else if (event == Event.ENTITY_SPAWNED) {
 					EntitySpawnedEvent ev = (EntitySpawnedEvent) e;
 					ev.onEvent((Entity)args.get("entity"));
+				} else if (event == Event.ENTITY_COLLISION) {
+					EntityCollisionEvent ev = (EntityCollisionEvent) e;
+					ev.onEvent((Entity)args.get("entity"), (Entity)args.get("entity_other"));
 				}
 			}
 		}
