@@ -19,6 +19,8 @@ public class PluginLoader {
 		return INSTANCE;
 	}
 	
+	public Plugin[] plugins = null;
+	
 	public Class<?> loadClass(String dir, String config) throws ClassNotFoundException, IOException {
 		return loadClass(new File(dir), config);
 	}
@@ -75,8 +77,6 @@ public class PluginLoader {
 	}
 	
 	public void initPlugins() {
-		Plugin[] plugins = null;
-		
 		try {
 			plugins = initAsPlugin(loadDirectory("plugins", "config.cfg"));
 		} catch (InstantiationException ex) {

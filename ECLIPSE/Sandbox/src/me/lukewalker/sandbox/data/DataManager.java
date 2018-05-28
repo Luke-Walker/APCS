@@ -32,7 +32,18 @@ public class DataManager {
 			if (in.isEmpty() || in.startsWith("#"))
 				continue;
 			final String[] split = in.split(" ");
-			settings.put(split[0], split[1]);
+			if (split.length > 2) {
+				String str = "";
+				for (int i = 1; i < split.length; i++) {
+					str += split[i];
+					
+					if (i != split.length-1)
+						str += " ";
+				}
+				settings.put(split[0], str);
+			} else {
+				settings.put(split[0], split[1]);
+			}
 		}
 		
 		br.close();
@@ -89,7 +100,6 @@ public class DataManager {
 	public void createFiles() {
 		createDir(PATH, "data");
 		createFile(new File(PATH + File.separator + "data"), "config_" + CONFIG_VERSION + ".cfg", new String[] {
-				"Main null"
 		});
 		createDir(PATH, "plugins");
 	}

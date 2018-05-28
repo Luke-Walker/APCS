@@ -9,7 +9,14 @@ import me.lukewalker.sandbox.events.type.TakeDamageEvent;
 
 public class EventManager {
 	
-	public static void triggerEvents(Event event, HashMap<String, Object> args) {
+	private EventManager() {}
+	private static EventManager INSTANCE = null;
+	public static EventManager getInstance() {
+		if (INSTANCE == null) INSTANCE = new EventManager();
+		return INSTANCE;
+	}
+	
+	public void triggerEvents(Event event, HashMap<String, Object> args) {
 		for (CustomEvent e : CustomEvent.events) {
 			if (event == e.getType()) {
 				if (event == Event.TAKE_DAMAGE) {
@@ -24,6 +31,10 @@ public class EventManager {
 				}
 			}
 		}
+	}
+	
+	public void initEvents() {
+		registerEvent(new PlayerPickUpItemEvent());
 	}
 	
 	public static void registerEvent(CustomEvent event) {}
