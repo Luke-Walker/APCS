@@ -9,11 +9,13 @@ public class PlayerPickUpItemEvent extends CustomEvent implements EntityCollisio
 
 	@Override
 	public void onEvent(Entity ent, Entity other) {
+		/*
 		if (!(ent.getType() instanceof EntityPlayer)) return;
 		if (!(other.getType() instanceof Item)) return;
 		
 		EntityPlayer player = (EntityPlayer) ent.getType();
 		player.addItem((Item)other.getType());
+		*/
 	}
 
 	@Override

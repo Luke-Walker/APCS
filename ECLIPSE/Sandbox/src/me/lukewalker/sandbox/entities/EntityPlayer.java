@@ -32,4 +32,8 @@ public class EntityPlayer extends EntityType {
 	public String getSprite() {
 		return "player.png";
 	}
+	@Override
+	public int getSpeed() {
+		return 50;
+	}
 }

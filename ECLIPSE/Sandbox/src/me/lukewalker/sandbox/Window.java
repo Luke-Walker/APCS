@@ -3,8 +3,6 @@ package me.lukewalker.sandbox;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.net.URL;
 
@@ -13,8 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import me.lukewalker.sandbox.entities.Entity;
+import me.lukewalker.sandbox.input.KeyboardListener;
 
-public class Window extends JPanel implements KeyListener {
+public class Window extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private static final int WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
@@ -39,7 +38,7 @@ public class Window extends JPanel implements KeyListener {
 		
 		frame.add(INSTANCE);
 		
-		frame.addKeyListener(this);
+		frame.addKeyListener(new KeyboardListener());
 	}
 	
 	@Override
@@ -54,18 +53,6 @@ public class Window extends JPanel implements KeyListener {
 		}
 		
 		repaint();
-	}
-	
-	@Override
-	public void keyPressed(KeyEvent e) {
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {		
 	}
 	
 	public void render(Graphics g, URL sprite, int x, int y) {

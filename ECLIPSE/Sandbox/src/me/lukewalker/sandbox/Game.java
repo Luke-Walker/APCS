@@ -4,6 +4,7 @@ import me.lukewalker.sandbox.data.DataManager;
 import me.lukewalker.sandbox.entities.Entity;
 import me.lukewalker.sandbox.entities.EntityPlayer;
 import me.lukewalker.sandbox.events.EventManager;
+import me.lukewalker.sandbox.input.KeyBindings;
 import me.lukewalker.sandbox.plugins.PluginLoader;
 
 public class Game {
@@ -25,6 +26,8 @@ public class Game {
 	public static void main(String[] args) {
 		state = GameState.LOADING;
 		
+		KeyBindings.initBindings();
+		
 		DataManager.getInstance().createFiles();
 		try {
 			DataManager.getInstance().loadSettings();
@@ -44,7 +47,8 @@ public class Game {
 		final EventManager em = EventManager.getInstance();
 		em.initEvents();
 		
-		state = GameState.TITLE_SCREEN;
+		//state = GameState.TITLE_SCREEN;
+		state = GameState.IN_GAME;
 		/*
 		while (true) {
 			

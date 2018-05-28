@@ -3,12 +3,12 @@ package me.lukewalker.sandbox.items;
 public class ItemSword extends Item {
 
 	@Override
-	public String getItemName() {
+	public String getName() {
 		return "Sword";
 	}
 
 	@Override
-	public String getItemSprite() {
+	public String getSprite() {
 		return "sword.png";
 	}
 }
