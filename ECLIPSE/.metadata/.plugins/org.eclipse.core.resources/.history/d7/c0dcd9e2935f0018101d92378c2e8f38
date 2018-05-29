@@ -1,0 +1,37 @@
+package me.lukewalker.sandbox.data;
+
+import java.io.File;
+
+public class DataManager {
+
+	private DataManager() {}
+	private static DataManager INSTANCE = null;
+	public static DataManager getInstance() {
+		if (INSTANCE == null) INSTANCE = new DataManager();
+		return INSTANCE;
+	}
+	
+	public File path = null;
+	
+	public void setDataLocation(File path) {
+		this.path = path;
+		System.out.println(path.getAbsolutePath());
+	}
+	
+	// CHANGE TO RETURN ACCURATE VALUE
+	public boolean isFirstLoad() {
+		return true;
+	}
+	
+	public void createDir(File path, String name) {
+		new File(path.getAbsolutePath() + File.pathSeparator + name).mkdir();
+	}
+	
+	public void createFile(File path, String name) {
+		
+	}
+	
+	public void createFiles() {
+		createDir(path, "plugins");
+	}
+}

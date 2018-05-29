@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.net.ServerSocket"/>
+<fullyQualifiedTypeName name="java.rmi.UnknownHostException"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="java.net.Socket"/>
+<fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+<fullyQualifiedTypeName name="java.awt.Color"/>
+<fullyQualifiedTypeName name="me.lukewalker.sandbox.entities.Entity"/>
+<fullyQualifiedTypeName name="me.lukewalker.sandbox.Game"/>
+<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+<fullyQualifiedTypeName name="java.net.URL"/>
+<fullyQualifiedTypeName name="me.lukewalker.sandbox.data.DataManager"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.io.OutputStreamWriter"/>
+<fullyQualifiedTypeName name="me.lukewalker.sandbox.entities.LivingEntity"/>
+<fullyQualifiedTypeName name="me.lukewalker.sandbox.entities.type.EntityType"/>
+<fullyQualifiedTypeName name="me.lukewalker.sandbox.entities.EntityPlayer"/>
+<fullyQualifiedTypeName name="me.lukewalker.sandbox.entities.type.ItemEntity"/>
+<fullyQualifiedTypeName name="me.lukewalker.sandbox.entities.items.ItemSword"/>
+</qualifiedTypeNameHistroy>

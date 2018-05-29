@@ -1,0 +1,8 @@
+package me.lukewalker.sandbox.entities;
+
+public interface LivingEntity {
+
+	void move(Entity ent, String direction, int steps);
+	
+	int getSpeed();
+}

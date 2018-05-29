@@ -34,7 +34,7 @@ public class EventManager {
 	}
 	
 	public void initEvents() {
-		registerEvent(new PlayerPickUpItemEvent());
+		// registerEvent(new PlayerPickUpItemEvent());
 	}
 	
 	public static void registerEvent(CustomEvent event) {}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;me.lukewalker.tictactoe.client&apos; to &apos;me.lukewalker.tictactoe&apos;&#x0D;&#x0A;- Original project: &apos;RockPaperScissors&apos;&#x0D;&#x0A;- Original element: &apos;RockPaperScissors/src/me.lukewalker.tictactoe.client&apos;&#x0D;&#x0A;- Renamed element: &apos;RockPaperScissors/src/me.lukewalker.tictactoe&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;me.lukewalker.tictactoe.client&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;me.lukewalker.tictactoe.client" name="me.lukewalker.tictactoe" qualified="false" references="true" stamp="1508861689993" textual="false" version="1.0"/>
+</session>

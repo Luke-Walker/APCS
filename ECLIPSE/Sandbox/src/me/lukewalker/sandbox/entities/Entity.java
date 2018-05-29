@@ -3,6 +3,9 @@ package me.lukewalker.sandbox.entities;
 import java.net.URL;
 import java.util.ArrayList;
 
+import me.lukewalker.sandbox.entities.type.EntityType;
+import me.lukewalker.sandbox.entities.type.LivingEntity;
+
 public class Entity {
 	
 	public static ArrayList<Entity> entities = new ArrayList<>();
@@ -25,14 +28,17 @@ public class Entity {
 		this.type = type;
 		this.x = x;
 		this.y = y;
-		this.speed = type.getSpeed();
 		this.sprite = sprite;
+		
+		if (type instanceof LivingEntity) {
+			this.speed = ((LivingEntity)type).getSpeed();
+		}
 		
 		entities.add(this);
 	}
 	
 	public void move(String direction) {
-		type.move(this, direction, getSpeed());
+		if (type instanceof LivingEntity) ((LivingEntity)type).move(this, direction, speed);
 	}
 	
 	public void destroy() {

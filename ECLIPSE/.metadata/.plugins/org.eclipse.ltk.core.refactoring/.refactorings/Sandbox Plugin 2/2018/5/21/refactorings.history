@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;config.cfg&apos; to &apos;Sandbox Plugin 2&apos;&#x0D;&#x0A;- Original project: &apos;Sandbox Plugin 2&apos;&#x0D;&#x0A;- Destination element: &apos;Sandbox Plugin 2&apos;&#x0D;&#x0A;- Original element: &apos;config.cfg&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" destination="=Sandbox Plugin 2" element1="src/config.cfg" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1527193535595" units="0" version="1.0"/>
+</session>

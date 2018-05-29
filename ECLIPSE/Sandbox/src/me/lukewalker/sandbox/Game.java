@@ -3,6 +3,7 @@ package me.lukewalker.sandbox;
 import me.lukewalker.sandbox.data.DataManager;
 import me.lukewalker.sandbox.entities.Entity;
 import me.lukewalker.sandbox.entities.EntityPlayer;
+import me.lukewalker.sandbox.entities.items.ItemSword;
 import me.lukewalker.sandbox.events.EventManager;
 import me.lukewalker.sandbox.input.KeyBindings;
 import me.lukewalker.sandbox.plugins.PluginLoader;
@@ -21,6 +22,9 @@ public class Game {
 	
 	private static GameState state = null;
 	
+	public static final EntityPlayer entityPlayer = new EntityPlayer();
+	public static final ItemSword itemSword = new ItemSword();
+	
 	public static Entity player = null;
 	
 	public static void main(String[] args) {
@@ -34,26 +38,24 @@ public class Game {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		
-		Window.getInstance().display();
 			
-		final EntityPlayer entityPlayer = new EntityPlayer();
-		
-		player = entityPlayer.spawn(250, 250);
-		
 		final PluginLoader pl = PluginLoader.getInstance();
 		pl.initPlugins();
 		
 		final EventManager em = EventManager.getInstance();
 		em.initEvents();
 		
+		Window.getInstance().display();
+		
+		player = entityPlayer.spawn(250, 250);
+		
 		//state = GameState.TITLE_SCREEN;
 		state = GameState.IN_GAME;
-		/*
-		while (true) {
-			
-		}
-		*/
+		
+		itemSword.spawn(500, 500);
+		
+		//while (true) {
+		//}
 	}
 	
 	public static GameState getState() { return state; }
