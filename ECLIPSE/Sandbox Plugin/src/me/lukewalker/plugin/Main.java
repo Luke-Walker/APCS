@@ -18,7 +18,7 @@ public class Main extends Plugin {
 	}
 
 	@Override
-	public void load() {		
+	public void load() {
 		EventManager.registerEvent(new PlayerDamageEvent());
 		
 		final EntityTest entityTest = new EntityTest();

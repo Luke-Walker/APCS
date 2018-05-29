@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -18,6 +20,9 @@ public class PluginLoader {
 		if (INSTANCE == null) INSTANCE = new PluginLoader();
 		return INSTANCE;
 	}
+	
+	public ArrayList<Plugin> enabled = null;
+	public ArrayList<Plugin> disabled = new ArrayList<>();
 	
 	public Class<?> loadClass(String dir, String config) throws ClassNotFoundException, IOException {
 		return loadClass(new File(dir), config);
@@ -51,6 +56,7 @@ public class PluginLoader {
 	// TODO: MAKE SURE ONLY .JAR FILES ARE BEING LOADED
 	public Class<?>[] loadDirectory(File dir, String config) throws ClassNotFoundException, IOException {
 		final File[] files = dir.listFiles();
+		for (File f : files) System.out.println(f.getName());
 		
 		final Class<?>[] classes = new Class<?>[files.length];
 		
@@ -75,7 +81,6 @@ public class PluginLoader {
 	
 	public void initPlugins() {
 		Plugin[] plugins = null;
-		
 		try {
 			plugins = initAsPlugin(loadDirectory("plugins", "config.cfg"));
 		} catch (InstantiationException ex) {
@@ -88,7 +93,9 @@ public class PluginLoader {
 			ex.printStackTrace();
 		}
 		
-		for (Plugin plugin : plugins) {
+		this.enabled = new ArrayList<>(Arrays.asList(plugins));
+		
+		for (Plugin plugin : enabled) {
 			plugin.load();
 		}
 	}

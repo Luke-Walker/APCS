@@ -10,10 +10,8 @@ public abstract class EntityType {
 	private URL sprite;
 	
 	public EntityType() {
-		super();
-		
-		sprite = getClass().getResource("/resources/images/entities/" + getSprite());
-		
+		this.sprite = getClass().getResource("/resources/images/entities/" + getSprite());
+			
 		entityTypes.add(this);
 	}
 	
@@ -27,5 +25,6 @@ public abstract class EntityType {
 	
 	public abstract String getName();
 	public abstract String getSprite();
+	public abstract int getSpeed();
 	public abstract void move(Entity ent, String direction, int steps);
 }

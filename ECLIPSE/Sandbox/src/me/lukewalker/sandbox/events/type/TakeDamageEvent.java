@@ -1,4 +1,4 @@
-package me.lukewalker.sandbox.events;
+package me.lukewalker.sandbox.events.type;
 
 import me.lukewalker.sandbox.entities.Entity;
 

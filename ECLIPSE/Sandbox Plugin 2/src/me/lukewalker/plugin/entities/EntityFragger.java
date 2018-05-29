@@ -5,10 +5,6 @@ import me.lukewalker.sandbox.entities.EntityType;
 
 public class EntityFragger extends EntityType {
 
-	public EntityFragger() {
-		super();
-	}
-	
 	@Override
 	public String getName() {
 		return "Fragger";

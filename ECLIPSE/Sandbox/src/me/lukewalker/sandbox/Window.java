@@ -2,23 +2,22 @@ package me.lukewalker.sandbox;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.io.File;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import me.lukewalker.sandbox.data.DataManager;
 import me.lukewalker.sandbox.entities.Entity;
+import me.lukewalker.sandbox.input.KeyboardListener;
 
 public class Window extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	private static final int WIDTH = 1000;
-	private static final int HEIGHT = 1000;
+	private static final int WIDTH = (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+	private static final int HEIGHT = (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 	
 	private Window() {}
 	private static Window INSTANCE = null;
@@ -39,18 +38,7 @@ public class Window extends JPanel {
 		
 		frame.add(INSTANCE);
 		
-		if (DataManager.getInstance().getSetting("Path").equals("null")) {
-			JFileChooser chooser = new JFileChooser();
-			chooser.setCurrentDirectory(new File("."));
-			chooser.setDialogTitle("Select Home Directory");
-			chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-			
-			chooser.setAcceptAllFileFilterUsed(false);
-			
-			if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-				DataManager.getInstance().setDataLocation(chooser.getSelectedFile() == null ? chooser.getCurrentDirectory() : chooser.getSelectedFile());
-			}
-		}
+		frame.addKeyListener(new KeyboardListener());
 	}
 	
 	@Override
