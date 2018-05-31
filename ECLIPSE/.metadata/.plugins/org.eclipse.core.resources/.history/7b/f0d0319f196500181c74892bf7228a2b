@@ -14,10 +14,10 @@ public abstract class EntityType {
 	
 	public EntityType() {
 		if (this instanceof ItemEntity) {
-			this.sprite = getClass().getResource("/images/items/" + getSprite());
+			this.sprite = getClass().getResource(getSprite());
 			itemTypes.add((ItemEntity)this);
 		} else {
-			this.sprite = getClass().getResource("/images/entities/" + getSprite());
+			this.sprite = getClass().getResource(getSprite());
 			entityTypes.add(this);
 		}
 	}

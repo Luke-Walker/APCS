@@ -14,12 +14,14 @@ public abstract class EntityType {
 	
 	public EntityType() {
 		if (this instanceof ItemEntity) {
-			this.sprite = getClass().getResource("/images/items/" + getSprite());
+			this.sprite = getClass().getResource("resources/images/items/" + getSprite());
 			itemTypes.add((ItemEntity)this);
 		} else {
-			this.sprite = getClass().getResource("/images/entities/" + getSprite());
+			this.sprite = getClass().getResource("resources/images/entities/" + getSprite());
 			entityTypes.add(this);
 		}
+		
+		System.out.println(sprite);
 	}
 	
 	public Entity spawn(int x, int y) {
