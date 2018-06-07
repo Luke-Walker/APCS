@@ -1,5 +1,0 @@
-package me.lukewalker.sandbox.entities;
-
-public interface LivingEntity {
-
-}

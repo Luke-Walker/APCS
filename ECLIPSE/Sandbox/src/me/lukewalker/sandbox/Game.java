@@ -23,6 +23,7 @@ public class Game {
 	private static GameState state = null;
 	
 	public static final EntityPlayer entityPlayer = new EntityPlayer();
+	
 	public static final ItemSword itemSword = new ItemSword();
 	
 	public static Entity player = null;

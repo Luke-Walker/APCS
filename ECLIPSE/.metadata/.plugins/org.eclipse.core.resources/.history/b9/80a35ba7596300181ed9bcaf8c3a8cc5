@@ -1,6 +1,0 @@
-package me.lukewalker.sandbox.entities;
-
-public interface LivingEntity {
-
-	void move(String direction, int steps);
-}
