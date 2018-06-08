@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Window.java&apos; to &apos;Sandbox/src/me.lukewalker.sandbox.ui&apos;&#x0D;&#x0A;- Original project: &apos;Sandbox&apos;&#x0D;&#x0A;- Destination element: &apos;Sandbox/src/me.lukewalker.sandbox.ui&apos;&#x0D;&#x0A;- Original element: &apos;me.lukewalker.sandbox.Window.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;me.lukewalker.sandbox.ui" element1="/src&lt;me.lukewalker.sandbox{Window.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1528473130576" units="1" version="1.0"/>
+</session>

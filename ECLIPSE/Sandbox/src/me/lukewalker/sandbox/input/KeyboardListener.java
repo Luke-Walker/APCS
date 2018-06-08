@@ -5,6 +5,7 @@ import java.awt.event.KeyListener;
 
 import me.lukewalker.sandbox.Game;
 import me.lukewalker.sandbox.entities.Entity;
+import me.lukewalker.sandbox.ui.PluginManagerWindow;
 
 public class KeyboardListener implements KeyListener {
 	
@@ -21,6 +22,7 @@ public class KeyboardListener implements KeyListener {
 			final Entity player = Game.player;
 			if (KeyBindings.getBinding(Control.UP) == key) {
 				player.move("up");
+				new PluginManagerWindow();
 			} else if (KeyBindings.getBinding(Control.DOWN) == key) {
 				player.move("down");
 			} else if (KeyBindings.getBinding(Control.LEFT) == key) {

@@ -7,6 +7,7 @@ import me.lukewalker.sandbox.entities.items.ItemSword;
 import me.lukewalker.sandbox.events.EventManager;
 import me.lukewalker.sandbox.input.KeyBindings;
 import me.lukewalker.sandbox.plugins.PluginLoader;
+import me.lukewalker.sandbox.ui.Window;
 
 public class Game {
 

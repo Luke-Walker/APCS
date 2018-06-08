@@ -1,0 +1,5 @@
+package me.lukewalker.sandbox.ui;
+
+public class PluginManagerWindow {
+
+}

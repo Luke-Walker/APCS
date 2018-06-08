@@ -1,8 +1,8 @@
 package me.lukewalker.plugin.entities;
 
 import me.lukewalker.sandbox.entities.Entity;
-import me.lukewalker.sandbox.entities.EntityType;
-import me.lukewalker.sandbox.entities.LivingEntity;
+import me.lukewalker.sandbox.entities.type.EntityType;
+import me.lukewalker.sandbox.entities.type.LivingEntity;
 
 public class EntityFragger extends EntityType implements LivingEntity {
 
