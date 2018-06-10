@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Sandbox Plugin/src/resources/images/entities/dog.png&apos; to &apos;test.png&apos;" description="Rename resource &apos;dog.png&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/resources/images/entities/dog.png" name="test.png" stamp="1527135610605" updateReferences="true"/>
+</session>
