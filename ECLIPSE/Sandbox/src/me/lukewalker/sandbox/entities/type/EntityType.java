@@ -23,7 +23,7 @@ public abstract class EntityType {
 	}
 	
 	public Entity spawn(int x, int y) {
-		return new Entity(this, x, y, sprite);
+		return new Entity(this, x, y, getWidth(), getHeight(), sprite);
 	}
 	
 	public URL getFullSprite() {
@@ -32,4 +32,6 @@ public abstract class EntityType {
 	
 	public abstract String getName();
 	public abstract String getSprite();
+	public abstract int getWidth();
+	public abstract int getHeight();
 }

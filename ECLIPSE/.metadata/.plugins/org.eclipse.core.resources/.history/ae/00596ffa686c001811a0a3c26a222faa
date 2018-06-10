@@ -1,0 +1,5 @@
+package me.lukewalker.sandbox.entities.items;
+
+public enum ItemTypes {
+
+}

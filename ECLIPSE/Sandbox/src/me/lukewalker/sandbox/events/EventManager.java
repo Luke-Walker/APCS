@@ -16,16 +16,16 @@ public class EventManager {
 		return INSTANCE;
 	}
 	
-	public void triggerEvents(Event event, HashMap<String, Object> args) {
+	public void triggerEvents(EventType event, HashMap<String, Object> args) {
 		for (CustomEvent e : CustomEvent.events) {
 			if (event == e.getType()) {
-				if (event == Event.TAKE_DAMAGE) {
+				if (event == EventType.TAKE_DAMAGE) {
 					TakeDamageEvent ev = (TakeDamageEvent) e;
 					ev.onEvent((Entity)args.get("entity"));
-				} else if (event == Event.ENTITY_SPAWNED) {
+				} else if (event == EventType.ENTITY_SPAWNED) {
 					EntitySpawnedEvent ev = (EntitySpawnedEvent) e;
 					ev.onEvent((Entity)args.get("entity"));
-				} else if (event == Event.ENTITY_COLLISION) {
+				} else if (event == EventType.ENTITY_COLLISION_WITH_ITEM) {
 					EntityCollisionEvent ev = (EntityCollisionEvent) e;
 					ev.onEvent((Entity)args.get("entity"), (Entity)args.get("entity_other"));
 				}
@@ -34,7 +34,7 @@ public class EventManager {
 	}
 	
 	public void initEvents() {
-		// registerEvent(new PlayerPickUpItemEvent());
+		registerEvent(new PlayerPickUpItemEvent());
 	}
 	
 	public static void registerEvent(CustomEvent event) {}

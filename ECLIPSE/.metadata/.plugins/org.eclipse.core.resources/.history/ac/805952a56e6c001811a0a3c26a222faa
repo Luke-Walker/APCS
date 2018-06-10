@@ -1,0 +1,37 @@
+package me.lukewalker.plugin.entities;
+
+import me.lukewalker.sandbox.entities.Entity;
+import me.lukewalker.sandbox.entities.type.EntityType;
+import me.lukewalker.sandbox.entities.type.LivingEntity;
+
+public class EntityFragger extends EntityType implements LivingEntity {
+
+	@Override
+	public int getSpeed() {
+		return 0;
+	}
+
+	@Override
+	public void move(Entity ent) {		
+	}
+
+	@Override
+	public int getHeight() {
+		return 0;
+	}
+
+	@Override
+	public String getName() {
+		return null;
+	}
+
+	@Override
+	public String getSprite() {
+		return null;
+	}
+
+	@Override
+	public int getWidth() {
+		return 0;
+	}
+}

@@ -10,5 +10,5 @@ public abstract class CustomEvent {
 		events.add(this);
 	}
 	
-	public abstract Event getType();
+	public abstract EventType getType();
 }

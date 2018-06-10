@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import me.lukewalker.sandbox.Game;
-import me.lukewalker.sandbox.entities.Entity;
+import me.lukewalker.sandbox.entities.EntityPlayer;
 import me.lukewalker.sandbox.ui.PluginManagerWindow;
 
 public class KeyboardListener implements KeyListener {
@@ -19,16 +19,15 @@ public class KeyboardListener implements KeyListener {
 		case TITLE_SCREEN:
 			break;
 		case IN_GAME:
-			final Entity player = Game.player;
 			if (KeyBindings.getBinding(Control.UP) == key) {
-				player.move("up");
+				EntityPlayer.direction = "up";
 				new PluginManagerWindow();
 			} else if (KeyBindings.getBinding(Control.DOWN) == key) {
-				player.move("down");
+				EntityPlayer.direction = "down";
 			} else if (KeyBindings.getBinding(Control.LEFT) == key) {
-				player.move("left");
+				EntityPlayer.direction = "left";
 			} else if (KeyBindings.getBinding(Control.RIGHT) == key) {
-				player.move("right");
+				EntityPlayer.direction = "right";
 			}
 		default:
 			break;
@@ -37,6 +36,7 @@ public class KeyboardListener implements KeyListener {
 	
 	@Override
 	public void keyReleased(KeyEvent e) {
+		EntityPlayer.direction = "";
 	}
 
 	@Override

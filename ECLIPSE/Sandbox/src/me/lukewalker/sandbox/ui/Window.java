@@ -55,19 +55,19 @@ public class Window extends JPanel {
 			break;
 		case IN_GAME:
 			for (Entity e : Entity.entities) {
-				render(g, e.getSprite(), e.getX(), e.getY());
+				render(g, e.getSprite(), e.getX(), e.getY(), e.getWidth(), e.getHeight());
 			}
 			break;
 		default:
 			break;
 		}
-			
+		
 		repaint();
 	}
 	
-	public void render(Graphics g, URL sprite, int x, int y) {
+	public void render(Graphics g, URL sprite, int x, int y, int width, int height) {
 		try {
-			g.drawImage(ImageIO.read(sprite), x, y, null);
+			g.drawImage(ImageIO.read(sprite), x, y, width, height, null);
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}

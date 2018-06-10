@@ -8,6 +8,8 @@ import me.lukewalker.sandbox.entities.type.LivingEntity;
 
 public class EntityPlayer extends EntityType implements LivingEntity {
 	
+	public static String direction = "";
+	
 	private ArrayList<ItemEntity> inventory = new ArrayList<>();
 
 	public void addItem(ItemEntity item) { inventory.add(item); }
@@ -30,17 +32,27 @@ public class EntityPlayer extends EntityType implements LivingEntity {
 	
 	@Override
 	public int getSpeed() {
-		return 50;
+		return 25;
 	}
 	
 	@Override
-	public void move(Entity ent, String direction, int steps) {
-		if (direction.equals("up")) ent.setY(ent.getY()-steps);
+	public void move(Entity ent) {
+		if (direction.equals("up")) ent.setY(ent.getY()-getSpeed());
 		
-		else if (direction.equals("down")) ent.setY(ent.getY()+steps);
+		else if (direction.equals("down")) ent.setY(ent.getY()+getSpeed());
 		
-		else if (direction.equals("left")) ent.setX(ent.getX()-steps);
+		else if (direction.equals("left")) ent.setX(ent.getX()-getSpeed());
 		
-		else if (direction.equals("right")) ent.setX(ent.getX()+steps);
+		else if (direction.equals("right")) ent.setX(ent.getX()+getSpeed());
+	}
+	
+	@Override
+	public int getWidth() {
+		return 300;
+	}
+	
+	@Override
+	public int getHeight() {
+		return 500;
 	}
 }

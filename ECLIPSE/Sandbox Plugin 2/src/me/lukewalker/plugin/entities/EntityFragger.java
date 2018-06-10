@@ -17,12 +17,21 @@ public class EntityFragger extends EntityType implements LivingEntity {
 	}
 
 	@Override
+	public int getWidth() {
+		return 150;
+	}
+	
+	@Override
+	public int getHeight() {
+		return 150;
+	}
+	
+	@Override
 	public int getSpeed() {
 		return 10;
 	}
 	
 	@Override
-	public void move(Entity ent, String direction, int steps) {
-		
+	public void move(Entity ent) {		
 	}
 }

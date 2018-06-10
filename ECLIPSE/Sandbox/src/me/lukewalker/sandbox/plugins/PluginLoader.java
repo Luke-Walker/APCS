@@ -21,6 +21,7 @@ public class PluginLoader {
 		return INSTANCE;
 	}
 	
+	public ArrayList<Plugin> plugins = null;
 	public ArrayList<Plugin> enabled = null;
 	public ArrayList<Plugin> disabled = new ArrayList<>();
 	
@@ -93,6 +94,7 @@ public class PluginLoader {
 			ex.printStackTrace();
 		}
 		
+		this.plugins = new ArrayList<>(Arrays.asList(plugins));
 		this.enabled = new ArrayList<>(Arrays.asList(plugins));
 		
 		for (Plugin plugin : enabled) {

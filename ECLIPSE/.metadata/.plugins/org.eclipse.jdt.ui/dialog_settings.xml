@@ -35,12 +35,13 @@
 		<item value="400" key="height"/>
 	</section>
 	<section name="FatJarPackageWizard">
-		<item value="H:\APCS\ECLIPSE" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
+		<item value="H:\APCS\ECLIPSE.xml" key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION"/>
 		<item value="Game - Sandbox" key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME"/>
-		<item value="C:\Users\lwalkercs\Desktop\Sandbox\Sandbox.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
+		<item value="D:\Desktop\Sandbox\Sandbox.jar" key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION"/>
 		<item value="false" key="FatJarPackageWizardPage.ANTSCRIPT_SAVE"/>
 		<item value="3" key="FatJarPackageWizardPage.LIBRARY_HANDLING"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="D:\Desktop\Sandbox\Sandbox.jar"/>
 			<item value="C:\Users\lwalkercs\Desktop\Sandbox\Sandbox.jar"/>
 		</list>
 		<list key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION_HISTORY">
@@ -78,6 +79,7 @@
 		<item value="false" key="JarManifestWizardPage.SAVE_MANIFEST"/>
 		<item value="false" key="JarPackageWizardPage.EXPORT_OUTPUT_FOLDER"/>
 		<list key="JarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="D:\Desktop\Sandbox\plugins\Plugin_2.jar"/>
 			<item value="C:\Users\lwalkercs\Desktop\Sandbox\plugins\Plugin_2.jar"/>
 			<item value="Plugin_2.jar"/>
 		</list>

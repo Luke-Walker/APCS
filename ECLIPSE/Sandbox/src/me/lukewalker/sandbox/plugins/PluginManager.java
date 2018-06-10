@@ -26,4 +26,11 @@ public class PluginManager {
 		pl.enabled.remove(plugin);
 		pl.disabled.add(plugin);
 	}
+	
+	public Plugin getPluginByName(String name) {
+		for (Plugin plugin : PluginLoader.getInstance().plugins) {
+			if (plugin.getName().equals(name)) return plugin;
+		}
+		return null;
+	}
 }
