@@ -75,7 +75,7 @@ public class Game {
 			public void run() {
 				for (Entity ent : Entity.entities) ent.move();
 			}
-		}, 0, 100);
+		}, 0, 50);
 		
 		//while (Window.getInstance().isFocusOwner()) {
 		while (true) {

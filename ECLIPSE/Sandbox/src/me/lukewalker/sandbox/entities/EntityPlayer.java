@@ -32,7 +32,7 @@ public class EntityPlayer extends EntityType implements LivingEntity {
 	
 	@Override
 	public int getSpeed() {
-		return 25;
+		return 30;
 	}
 	
 	@Override

@@ -11,6 +11,7 @@ public class KeyBindings {
 		bindings.put(Control.DOWN, 83);
 		bindings.put(Control.LEFT, 65);
 		bindings.put(Control.RIGHT, 68);
+		bindings.put(Control.PLUGIN_MANAGER, 80);
 	}
 	
 	public static int getBinding(Control control) { return bindings.get(control); }

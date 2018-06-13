@@ -14,6 +14,8 @@ import java.util.jar.JarFile;
 
 public class PluginLoader {
 
+	// CREDIT TO SOMEONE ON THE INTERNET FOR A LOT OF HELP ON THE PLUGIN LOADER CLASS
+	
 	private PluginLoader() {}
 	private static PluginLoader INSTANCE = null;
 	public static PluginLoader getInstance() {

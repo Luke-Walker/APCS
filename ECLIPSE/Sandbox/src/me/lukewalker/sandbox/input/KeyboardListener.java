@@ -21,13 +21,14 @@ public class KeyboardListener implements KeyListener {
 		case IN_GAME:
 			if (KeyBindings.getBinding(Control.UP) == key) {
 				EntityPlayer.direction = "up";
-				new PluginManagerWindow();
 			} else if (KeyBindings.getBinding(Control.DOWN) == key) {
 				EntityPlayer.direction = "down";
 			} else if (KeyBindings.getBinding(Control.LEFT) == key) {
 				EntityPlayer.direction = "left";
 			} else if (KeyBindings.getBinding(Control.RIGHT) == key) {
 				EntityPlayer.direction = "right";
+			} else if (KeyBindings.getBinding(Control.PLUGIN_MANAGER) == key) {
+				new PluginManagerWindow();
 			}
 		default:
 			break;

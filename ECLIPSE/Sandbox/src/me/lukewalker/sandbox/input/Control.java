@@ -5,5 +5,6 @@ public enum Control {
 	UP,
 	DOWN,
 	LEFT,
-	RIGHT
+	RIGHT,
+	PLUGIN_MANAGER
 }
