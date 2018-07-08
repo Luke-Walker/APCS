@@ -52,9 +52,9 @@ public class PluginManagerWindow extends JFrame {
 		btnDisable.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for (String s : enabledList.getSelectedValuesList()) {
+				for (String s : enabledList.getSelectedValuesList())
 					PluginManager.getInstance().disablePlugin(PluginManager.getInstance().getPluginByName(s));
-				}
+				
 				enabledList.setModel(getEnabledList());
 				disabledList.setModel(getDisabledList());
 			}
@@ -66,9 +66,9 @@ public class PluginManagerWindow extends JFrame {
 		btnEnable.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				for (String s : disabledList.getSelectedValuesList()) {
+				for (String s : disabledList.getSelectedValuesList())
 					PluginManager.getInstance().enablePlugin(PluginManager.getInstance().getPluginByName(s));
-				}
+				
 				enabledList.setModel(getEnabledList());
 				disabledList.setModel(getDisabledList());
 			}

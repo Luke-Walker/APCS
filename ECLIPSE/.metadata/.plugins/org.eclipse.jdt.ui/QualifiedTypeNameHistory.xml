@@ -32,9 +32,9 @@
 <fullyQualifiedTypeName name="java.util.Timer"/>
 <fullyQualifiedTypeName name="java.util.TimerTask"/>
 <fullyQualifiedTypeName name="me.lukewalker.sandbox.entities.items.ItemType"/>
-<fullyQualifiedTypeName name="me.lukewalker.sandbox.entities.type.ItemEntity"/>
 <fullyQualifiedTypeName name="me.lukewalker.sandbox.entities.type.EntityType"/>
 <fullyQualifiedTypeName name="java.awt.Rectangle"/>
 <fullyQualifiedTypeName name="me.lukewalker.sandbox.events.EventType"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="me.lukewalker.sandbox.entities.type.ItemEntity"/>
 </qualifiedTypeNameHistroy>

@@ -20,6 +20,6 @@ public class PlayerPickUpItemEvent extends CustomEvent implements EntityCollisio
 
 	@Override
 	public EventType getType() {
-		return EventType.ENTITY_COLLISION_WITH_ITEM;
+		return EventType.ENTITY_COLLISION;
 	}
 }

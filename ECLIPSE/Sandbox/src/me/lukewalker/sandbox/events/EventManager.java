@@ -25,7 +25,7 @@ public class EventManager {
 				} else if (event == EventType.ENTITY_SPAWNED) {
 					EntitySpawnedEvent ev = (EntitySpawnedEvent) e;
 					ev.onEvent((Entity)args.get("entity"));
-				} else if (event == EventType.ENTITY_COLLISION_WITH_ITEM) {
+				} else if (event == EventType.ENTITY_COLLISION) {
 					EntityCollisionEvent ev = (EntityCollisionEvent) e;
 					ev.onEvent((Entity)args.get("entity"), (Entity)args.get("entity_other"));
 				}
