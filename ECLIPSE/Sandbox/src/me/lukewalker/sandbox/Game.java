@@ -92,7 +92,7 @@ public class Game {
 						eArgs.put("entity", player);
 						eArgs.put("entity_other", ent);
 						
-						EventManager.getInstance().triggerEvents(EventType.ENTITY_COLLISION_WITH_ITEM, eArgs);
+						EventManager.getInstance().triggerEvents(EventType.ENTITY_COLLISION, eArgs);
 					}
 				}
 			}
